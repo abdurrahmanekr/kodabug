@@ -1,13 +1,24 @@
 <ion-view>
-	<ion-content>
-		<div class="list card">
-		  <label class="item item-input">
-		    <input type="text" ng-model="user.name" placeholder="Kullanıcı Adı">
-		  </label>
-		  <label class="item item-input">
-		    <input type="password" ng-model="user.password" placeholder="Şifre">
-		  </label>
-		  	<button class="button button-positive" ng-click="login(user)">Giriş</button>
-		</div>
-	</ion-content>
+    <ion-content>
+    	<div class="login">
+	        <form onsubmit="return false">
+		        <center>
+		            <img class="col-50" ng-src="resources/img/main.png" style="margin-bottom:10px;"/>
+		        </center>
+		        <label class="item item-input item-floating-label">
+		            <span class="input-label">Kullanıcı Adı</span>
+		            <input placeholder="Kullanıcı Adı" ng-model="user.name" type="text">
+		        </label>
+		        <label class="item item-input item-floating-label">
+		            <span class="input-label">Şifre</span>
+		            <input placeholder="Şifre" ng-model="user.password" type="password">
+		        </label>
+		        <div class="padding">
+					<button class="button button-block button-positive" ng-click="login(user)" type="submit">
+						Giriş Yap <i class="ion-log-in"></i>
+			    	</button>
+		        </div>
+	        </form>
+    	</div>
+    </ion-content>
 </ion-view>

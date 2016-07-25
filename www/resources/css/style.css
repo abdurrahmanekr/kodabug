@@ -1,1 +1,22 @@
 /* Empty. Add your own CSS if you like */
+.login{
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+.user-badges span{
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.new-game.list .item.dark{
+	background: #dbdbdb;
+	text-align: center;
+	/*-webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;*/
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

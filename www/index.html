@@ -3,14 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" name="viewport">
+        <link rel="icon" sizes="16x16 32x32" type="image/x-icon" href="resources/img/favicon.png">
         <title>Kodabug</title>
 
         <link href="resources/lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="resources/css/style.css" rel="stylesheet">
         <script src="resources/lib/ionic/js/ionic.bundle.js"></script>
-        <script src="cordova.js"></script>
-		<script src="resources/app.js"></script>
 		<script src="resources/config.js"></script>
+        
+        <script src="app.js"></script>
+        <script src="cordova.js"></script>
 
     </head>
 <body>
@@ -20,7 +22,11 @@
 <!-- controllers -->
 <script src="controllers/MainController.js"></script>
 <script src="controllers/LoginController.js"></script>
+<script src="controllers/FriendsController.js"></script>
+<script src="controllers/ProfileController.js"></script>
+<script src="controllers/CoinsController.js"></script>
 
 <!-- services -->
 <script src="services/AjaxService.js"></script>
 <script src="services/LoadingService.js"></script>
+<script src="services/PopupService.js"></script>
