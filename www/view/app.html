@@ -1,23 +1,23 @@
 <ion-header-bar class="bar-stable">
 	<h1 class="title user-badges">
 		<div class="tabs">
-		    <a class="tab-item" href="#/app/heart">
+		    <a class="tab-item" ng-click="openCoins('heart')">
 		        <span class="balanced"><i class="ion-ios-heart"></i> 9</span>
 		    </a>
-		    <a class="tab-item" href="#/app/bug">
+		    <a class="tab-item" ng-click="openCoins('bug')">
 				<span class="assertive"><i class="ion-bug"></i> 432</span>
 		    </a>
-		    <a class="tab-item" href="#/app/fire">
+		    <a class="tab-item" ng-click="openCoins('fire')">
 				<span class="royal"><i class="ion-ios-flame"></i> 5</span>
 		    </a>
-		    <a class="tab-item" href="#/app/key">
+		    <a class="tab-item" ng-click="openCoins('key')">
 				<span class="dark"><i class="ion-key"></i> 5</span>
 		    </a>
 		</div>
 	</h1>
 </ion-header-bar>
 <ion-nav-view></ion-nav-view>
-<div class="tabs">
+<ion-tabs>
     <a class="tab-item" href="#/app/main">
         Ev
     </a>
@@ -30,4 +30,4 @@
     <a class="tab-item" href="#/app/profile/1">
         Profil
     </a>
-</div>
+</ion-tabs>

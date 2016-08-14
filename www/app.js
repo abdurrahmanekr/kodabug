@@ -37,27 +37,6 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
 			controller : 'ProfileController'
 		})
 		//----------------------------------
-		.state('app.heart', {
-			url : '/heart',
-			cache: false,
-			templateUrl : 'view/coins/heart.html',
-		})
-		.state('app.bug', {
-			url : '/bug',
-			cache: false,
-			templateUrl : 'view/coins/bug.html',
-		})
-		.state('app.fire', {
-			url : '/fire',
-			cache: false,
-			templateUrl : 'view/coins/fire.html',
-		})
-		.state('app.key', {
-			url : '/key',
-			cache: false,
-			templateUrl : 'view/coins/key.html',
-		})
-		//----------------------------------
 		.state('login', {
 			url : '/login',
 			templateUrl : 'view/login.html',

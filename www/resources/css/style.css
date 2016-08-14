@@ -16,7 +16,62 @@
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;*/
 }
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  -webkit-transform: translate3d(0, -50px, 0);
+  -ms-transform: translate3d(0, -50px, 0);
+  transform: translate3d(0, -50px, 0);
+
+  -webkit-transition: -webkit-transform .5s ease-out;
+  -ms-transition: -webkit-transform .5s ease-out;
+  transition: transform .5s ease-out;
+}
+
+.pace.pace-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.pace .pace-progress {
+  display: block;
+  z-index: 2000;
+  min-width: 5% !important;
+  min-height: 10px;
+  color: white;
+  font-size: 12px
+  text-align:left;
+}
+.image-modal {
+    width: 100% !important;
+    height: 100%;
+    top: 0 !important;
+    left: 0 !important;
+}
+.color-demo {
+    float: right;
+    width: 20px;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}
+.calm-border {
+    border-color: #0a9dc7;
+}
+.calm-bg {
+    background-color: #11c1f3;
+}
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
