@@ -36,7 +36,15 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl : 'view/profile.html',
 			controller : 'ProfileController'
 		})
+		
 		//----------------------------------
+
+		.state('game', {
+			url : '/game/:gameId',
+			cache: false,
+			templateUrl : 'view/game.html',
+			controller : 'GameController'
+		})
 		.state('login', {
 			url : '/login',
 			templateUrl : 'view/login.html',

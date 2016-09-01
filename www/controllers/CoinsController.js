@@ -1,6 +1,6 @@
 "use strict";
 
-KodaBugApp.controller('CoinsController', function($scope, $stateParams) {
+KodaBugApp.controller('GameController', function($scope, $stateParams) {
     $scope.src = $stateParams.type;
     if ($stateParams.type = "heart")
     	return false
