@@ -10,12 +10,12 @@ KodaBugApp.controller('GameController', function($scope, $stateParams, $timeout,
 	    	click: null,
 	    	trueOption: null
 	    };
-    })
+    });
     $scope.useOption = function (index) {
     	$scope.game.click = index;
     	GameService.getTrueOption($scope.gameId, index).then(function (res) {
     		$scope.game.trueOption = res.trueOption;
-    		if (index == res.trueOption)
+    		if (res.win)
     			LoadingService.show("Tebrikler Doğru Cevap !");
     		else 
     			LoadingService.show("Yanlış Cevap Verdin !");

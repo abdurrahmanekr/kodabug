@@ -15,7 +15,8 @@ KodaBugApp.service('GameService', function ($q) {
 		getTrueOption: function (gameId, index) {
 			var deferred = $q.defer();
 			deferred.resolve({
-				trueOption: 0
+				trueOption: 0,
+				win: index == 0
 			});
 			return deferred.promise; 
 		},
