@@ -8,8 +8,14 @@ KodaBugApp.controller('GameController', function($scope, $stateParams, $timeout,
 	    	question: res.question,
 	    	options: res.options,
 	    	click: null,
-	    	trueOption: null
+	    	trueOption: null,
+            type: {
+                class: "game-type-" + res.type
+            }
 	    };
+        $timeout(function () {
+            GameService.highlightingOnLoad();
+        })
     });
     $scope.useOption = function (index) {
     	$scope.game.click = index;

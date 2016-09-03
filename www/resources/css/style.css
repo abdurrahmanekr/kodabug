@@ -1,3 +1,8 @@
+pre,
+code,
+pre code{
+    font-family: monospace;
+}
 .login {
     padding: 10px;
     position: absolute;
@@ -105,6 +110,21 @@ animation:spin 4s linear infinite;*/
     padding: 30px;
     height: 100%;
 }
+
+.game-type-code,
+.game-type-code pre{
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    font-size: 10px;
+}
+
+.game-type-code p{
+    padding: 10px;
+    padding-top: 20px;
+    font-size: 12px;
+}
+
 
 @-moz-keyframes spin {
     100% {

@@ -50,5 +50,5 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl : 'view/login.html',
 			controller : 'LoginController'
 		});
-	$urlRouterProvider.otherwise('/login');
+	$urlRouterProvider.otherwise('/game/1');
 });

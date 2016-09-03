@@ -1,8 +1,9 @@
 <div class="game">
     <div class="game-top-bar">
-        <div class="game-question">
+        <!-- <div class="game-question" ng-class="game.type.class">
             {{game.question}}
-        </div>
+        </div> -->
+        <div class="game-question" ng-class="game.type.class" ng-bind-html="game.question"></div>
     </div>
     <div class="game-content">
         <ul class="game-options">
