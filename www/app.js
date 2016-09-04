@@ -40,15 +40,47 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
 		//----------------------------------
 
 		.state('game', {
-			url : '/game/:gameId',
+			url : '/game',
 			cache: false,
-			templateUrl : 'view/game.html',
-			controller : 'GameController'
+			templateUrl : 'view/game/app.html',
+		})
+		.state('game.main', {
+			url : '/main',
+			cache: false,
+			templateUrl : 'view/game/main.html',
+		})
+		.state('game.main.dash', {
+			url : '/dash',
+			views: {
+      			'dash': {
+					templateUrl : 'view/game/dash.html',
+					cache: false
+				}
+			}
+		})
+		.state('game.main.play', {
+			url : '/play/:gameId',
+			views: {
+      			'play': {
+					templateUrl : 'view/game/play.html',
+					cache: false,
+					controller : 'GameController'
+				}
+			}
+		})
+		.state('game.main.result', {
+			url : '/result',
+			views: {
+      			'result': {
+					templateUrl : 'view/game/result.html',
+					cache: false
+				}
+			}
 		})
 		.state('login', {
 			url : '/login',
 			templateUrl : 'view/login.html',
 			controller : 'LoginController'
 		});
-	$urlRouterProvider.otherwise('/game/1');
+	$urlRouterProvider.otherwise('/game');
 });

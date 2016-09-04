@@ -1,16 +1,17 @@
 "use strict";
 
-KodaBugApp.controller('GameController', function($scope, $stateParams, $timeout, GameService, LoadingService) {
+KodaBugApp.controller('GameController', function($scope, $stateParams, $timeout, GameService, LoadingService, $animate) {
     $scope.gameId = $stateParams.gameId;
     
     GameService.getGame($scope.gameId).then(function(res) {
-	    $scope.game = {
+
+        $scope.game = {
 	    	question: res.question,
 	    	options: res.options,
 	    	click: null,
 	    	trueOption: null,
             type: {
-                class: "game-type-" + res.type
+                class: "game-type-" + res.type,
             }
 	    };
         $timeout(function () {

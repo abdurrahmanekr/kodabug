@@ -23,8 +23,8 @@ KodaBugApp.service('GameService', function ($q) {
 		getTrueOption: function (gameId, index) {
 			var deferred = $q.defer();
 			deferred.resolve({
-				trueOption: 0,
-				win: index == 0
+				trueOption: 1,
+				win: index == 1
 			});
 			return deferred.promise; 
 		},
@@ -38,11 +38,15 @@ KodaBugApp.service('GameService', function ($q) {
 		},
 
 		highlightingOnLoad: function () {
-			var pre = document.querySelector("pre").querySelector("code");
-			hljs.configure({
-				useBR: false
-			})
-			hljs.highlightBlock(pre);
+			try {
+				var pre = document.querySelector("pre").querySelector("code");
+				hljs.configure({
+					useBR: false
+				})
+				hljs.highlightBlock(pre);
+			} catch (e){
+				return;
+			}
 		}
 
 	}
