@@ -82,7 +82,7 @@ animation:spin 4s linear infinite;*/
 }
 
 .game {
-    background: #eee;
+    background: #2c3e50;
 }
 
 .game-top-bar {
@@ -110,6 +110,7 @@ animation:spin 4s linear infinite;*/
     background: white;
     padding: 30px;
     height: 100%;
+    border-radius: 5px;
 }
 
 .game-type-code,
@@ -128,9 +129,10 @@ animation:spin 4s linear infinite;*/
 .game-type-code p{
     padding: 10px;
     padding-top: 20px;
-    font-size: 4vmin;
+    font-size: 5vmin;
     max-height: 80px;
     width: 100%;
+    text-align: center;111
 }
 
 

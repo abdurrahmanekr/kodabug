@@ -60,10 +60,10 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
 		})
 		.state('game.main.play', {
 			url : '/play/:gameId',
+			cache: false,
 			views: {
       			'play': {
 					templateUrl : 'view/game/play.html',
-					cache: false,
 					controller : 'GameController'
 				}
 			}
@@ -82,5 +82,5 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl : 'view/login.html',
 			controller : 'LoginController'
 		});
-	$urlRouterProvider.otherwise('/game');
+	$urlRouterProvider.otherwise('/game/main/play/1');
 });
