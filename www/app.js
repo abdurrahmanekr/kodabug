@@ -12,7 +12,8 @@ KodaBugApp.run(function($ionicPlatform) {
   	});
 });
 
-KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
+KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+	$ionicConfigProvider.tabs.position('bottom');
 	$stateProvider
 		.state('app', {
 			url : '/app',
@@ -82,5 +83,5 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl : 'view/login.html',
 			controller : 'LoginController'
 		});
-	$urlRouterProvider.otherwise('/game/main/play/1');
+	$urlRouterProvider.otherwise('app/main');
 });

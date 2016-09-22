@@ -32,7 +32,7 @@ KodaBugApp.service('GameService', function ($q) {
 		getRandomGame: function () {
 			var deferred = $q.defer();
 			deferred.resolve({
-				id: "1"
+				id: parseInt(Math.random() * 100) % 10
 			});
 			return deferred.promise; 
 		},

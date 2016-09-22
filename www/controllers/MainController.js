@@ -1,6 +1,6 @@
 "use strict";
 
-KodaBugApp.controller('MainController', function ($scope, $state, $ionicHistory, PopupService) {
+KodaBugApp.controller('MainController', function ($scope, $state, $ionicHistory, PopupService, GameService) {
 	$scope.logout = function () {
 		$state.go("login");
 		$ionicHistory.clearHistory();
@@ -10,6 +10,13 @@ KodaBugApp.controller('MainController', function ($scope, $state, $ionicHistory,
 		var ilhams = ["naber","kokoş","serbest","bu","stil"];
 		var rnd = parseInt((Math.random() * 100) % 5);
         PopupService.open("İlham Geliyor", ilhams[rnd], "Tamam");
+	};
+	
+	$scope.newGame = function () {
+		GameService.getRandomGame().then(function(res) {
+            res = res.id;
+			$state.go("game.main.play", {gameId: res});
+		});
 	};
 
 	$scope.openCoins = function (type) {
