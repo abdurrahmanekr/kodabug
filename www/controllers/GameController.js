@@ -1,6 +1,6 @@
 "use strict";
 
-KodaBugApp.controller('GameController', function($scope, $stateParams, $state, $timeout, $ionicHistory, $animate, GameService, LoadingService) {
+KodaBugApp.controller('GameController', function($scope, $rootScope, $stateParams, $state, $timeout, $ionicHistory, $animate, GameService, LoadingService, PopupService) {
     $scope.gameId = $stateParams.gameId;
     
     GameService.getGame($scope.gameId).then(function(res) {
@@ -12,11 +12,20 @@ KodaBugApp.controller('GameController', function($scope, $stateParams, $state, $
 	    	trueOption: null,
             type: {
                 class: "game-type-" + res.type,
-            }
+            },
+            time: 16
 	    };
         $timeout(function () {
             GameService.highlightingOnLoad();
-        })
+        });
+        $scope.timer = function() {
+            $scope.game.time--;
+            if ($scope.game.time != 0)
+                $timeout(function() {
+                    $scope.timer();
+                }, 1000);
+        };
+        $scope.timer();
     });
     $scope.useOption = function (index) {
     	$scope.game.click = index;
@@ -36,15 +45,18 @@ KodaBugApp.controller('GameController', function($scope, $stateParams, $state, $
     		case "key":
     			break;
 			case "fire":
-                GameService.getRandomGame().then(function(res) {
-                    res = res.id;
-                    $state.go("game.main.play", {gameId: res}).then(function() {
-                        $ionicHistory.nextViewOptions({
-                            disableAnimate: false,
-                            disableBack: true
+                if (GLOBAL.user.fire > 0)
+                    GameService.getRandomGame().then(function(res) {
+                        res = res.id;
+                        $state.go("game.main.play", { gameId: res }).then(function() {
+                            $ionicHistory.nextViewOptions({
+                                disableBack: true
+                            });
+                            $rootScope.myUser.fire = --GLOBAL.user.fire;
                         });
-                    })
-                })
+                    });
+                else
+                    PopupService.open( "Ateşin bitti", "Maalesef atlama yapamazsın :(");
 				break;
     	}
     }

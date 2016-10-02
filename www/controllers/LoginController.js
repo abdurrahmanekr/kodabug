@@ -1,6 +1,6 @@
 "use strict";
 
-KodaBugApp.controller('LoginController', function($scope, PopupService, AjaxService, LoadingService, $timeout, $state, $ionicHistory) {
+KodaBugApp.controller('LoginController', function($scope, $timeout, $state, $ionicHistory, WebService, LoadingService, PopupService, AjaxService) {
     $scope.user = {
         name: "",
         password: ""
@@ -21,6 +21,7 @@ KodaBugApp.controller('LoginController', function($scope, PopupService, AjaxServ
                     }, 3000);
                 } else if(response.status) {
                     //giriş başarılı
+                    GLOBAL.user.usid = data.name;
                     LoadingService.show("Giriş Başarılı", false);
                     $timeout(function() {
                         LoadingService.hide();

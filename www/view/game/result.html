@@ -1,37 +1,21 @@
-<div class="game">
-    <div class="game-top-bar">
-        <!-- <div class="game-question" ng-class="game.type.class">
-            {{game.question}}
-        </div> -->
-        <div class="game-question" ng-class="game.type.class" ng-bind-html="game.question"></div>
-    </div>
-    <div class="game-content">
-        <ul class="game-options">
-            <li class="button button-block button-positive"
-            	ng-repeat="item in game.options track by $index"
-            	ng-class="{'button-assertive' : $index == game.click, 'button-balanced': $index == game.trueOption}"
-            	ng-click="useOption($index);">
-            	{{item}} {{game.type.fontSize}}
-            </li>
-        </ul>
-    </div>
-    <div class="tabs">
-        <a class="tab-item" ng-click="openCoins('key')">
-            <span class="dark">
-                İpucu
-                <i class="ion-key">
-                </i>
-                5
-            </span>
-        </a>
-        <a class="tab-item" ng-click="openCoins('fire')">
-            <span class="royal">
-                Atla
-                <i class="ion-ios-flame">
-                </i>
-                5
-            </span>
-        </a>
-    </div>
-</div>
-<ion-nav-view></ion-nav-view>
+<ion-view>
+    <ion-content class="result win">
+        <div class="row row-center">
+            <div class="col">
+                <ion-item class="item-text-wrap result-head">
+                    <div>Tebrikler ! <br/> Devam etmek ister miydin ?</div>
+                    <div>Sıra ona geçti ! <br/></div>
+                </ion-item>
+                <ion-item class="button-bar">
+                    <button class="button button-assertive">Çık</button>
+                    <button class="button button-balanced">Devam</button>
+                </ion-item>
+                <ion-item>
+                    <center>
+                            <img class="col-50" ng-src="resources/img/main.png" style="margin-bottom:10px;"/>
+                        </center>
+                </ion-item>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

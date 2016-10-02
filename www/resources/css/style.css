@@ -81,8 +81,11 @@ animation:spin 4s linear infinite;*/
     background-color: #11c1f3;
 }
 
-.game {
+.play {
     background: #2c3e50;
+}
+.play .scroll {
+    height: 100%;
 }
 
 .game-top-bar {
@@ -153,4 +156,37 @@ animation:spin 4s linear infinite;*/
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+/* result */
+.result .row, .result .scroll {
+  height: 100%;
+}
+
+.result.lose {
+    background: #ffe6e6
+}
+
+.result.win {
+    background: #ceffcc;
+}
+
+.result .item {
+    border: none;
+    background: none;
+}
+
+.result-head {
+    text-align: center;
+    font-size: 20px;
+}
+
+.timer {
+    width: 100%;
+    padding: 2px;
+    background: #afa;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: 1000ms;
 }
