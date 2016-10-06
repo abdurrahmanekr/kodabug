@@ -1,14 +1,14 @@
 <ion-view>
-    <ion-content class="result win">
+    <ion-content class="result" ng-class="{'win': game.result === true, 'lose' : game.result === false}">
         <div class="row row-center">
             <div class="col">
                 <ion-item class="item-text-wrap result-head">
-                    <div>Tebrikler ! <br/> Devam etmek ister miydin ?</div>
-                    <div>Sıra ona geçti ! <br/></div>
+                    <div ng-if="game.result === true">Tebrikler ! <br/> Devam etmek ister miydin ?</div>
+                    <div ng-if="game.result === false">Sıra ona geçti ! <br/></div>
                 </ion-item>
                 <ion-item class="button-bar">
                     <button class="button button-assertive">Çık</button>
-                    <button class="button button-balanced">Devam</button>
+                    <button class="button button-balanced" ng-if="game.result === true">Devam</button>
                 </ion-item>
                 <ion-item>
                     <center>

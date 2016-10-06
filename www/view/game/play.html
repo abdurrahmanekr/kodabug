@@ -3,7 +3,7 @@
         <div class="buttons">
             <button class="button button-clear icon ion-arrow-left-c"></button>
         </div>
-        <h1 class="title">
+        <h1 class="title" ng-show="$parent.game.result == null">
             {{game.time}}
             <span class="timer" style="width: {{ 10 * game.time}}%; background: {{game.time > 5 ? '#afa' : 'red';}};"></span>
         </h1>

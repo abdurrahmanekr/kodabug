@@ -44,6 +44,7 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 			url : '/game',
 			cache: false,
 			templateUrl : 'view/game/app.html',
+			controller : 'GameController'
 		})
 		.state('game.main', {
 			url : '/main',
@@ -65,7 +66,7 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 			views: {
       			'play': {
 					templateUrl : 'view/game/play.html',
-					controller : 'GameController'
+					controller : 'GamePlayController'
 				}
 			}
 		})
