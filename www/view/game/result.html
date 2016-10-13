@@ -7,8 +7,8 @@
                     <div ng-if="game.result === false">Sıra ona geçti ! <br/></div>
                 </ion-item>
                 <ion-item class="button-bar">
-                    <button class="button button-assertive">Çık</button>
-                    <button class="button button-balanced" ng-if="game.result === true">Devam</button>
+                    <button class="button button-assertive" ng-click="exit()">Çık</button>
+                    <button class="button button-balanced" ng-if="game.result === true" ng-click="next()">Devam</button>
                 </ion-item>
                 <ion-item>
                     <center>

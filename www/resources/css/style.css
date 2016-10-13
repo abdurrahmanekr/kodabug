@@ -1,8 +1,7 @@
-pre,
-code,
-pre code{
+pre, code, pre code {
     font-family: monospace;
 }
+
 .login {
     padding: 10px;
     position: absolute;
@@ -84,6 +83,7 @@ animation:spin 4s linear infinite;*/
 .play {
     background: #2c3e50;
 }
+
 .play .scroll {
     height: 100%;
 }
@@ -116,28 +116,27 @@ animation:spin 4s linear infinite;*/
     border-radius: 5px;
 }
 
-.game-type-code,
-.game-type-code pre{
+.game-type-code, .game-type-code pre {
     width: 100%;
     height: 100%;
     padding: 0px;
     font-size: 4vmin;
 }
 
-.game-type-code pre code{
+.game-type-code pre code {
     background: none;
     margin: 10px;
 }
 
-.game-type-code p{
+.game-type-code p {
     padding: 10px;
     padding-top: 20px;
     font-size: 5vmin;
     max-height: 80px;
     width: 100%;
-    text-align: center;111
+    text-align: center;
+    111
 }
-
 
 @-moz-keyframes spin {
     100% {
@@ -158,9 +157,11 @@ animation:spin 4s linear infinite;*/
     }
 }
 
+
 /* result */
+
 .result .row, .result .scroll {
-  height: 100%;
+    height: 100%;
 }
 
 .result.lose {
@@ -189,4 +190,73 @@ animation:spin 4s linear infinite;*/
     bottom: 0;
     right: 0;
     transition: 1000ms;
+}
+
+
+/* game dash */
+
+.gameDash .scroll, .gameDash .row {
+    height: 100%;
+}
+
+.g-dash-img {
+    padding: 5px;
+    height: 15%;
+}
+
+.g-dash-img img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.g-dash-types {
+    height: 85%;
+    text-align: center;
+}
+
+.g-dash-types div {
+    padding: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 12px;
+    background: #f5f5f5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.g-dash-types div.debug {
+    border-right: 2px solid #ebe;
+}
+
+.g-dash-types div.eng {
+    border-right: 2px solid #ff9a9a;
+}
+
+.g-dash-types div.algorithm {
+    border-right: 2px solid #8dffa5;
+}
+
+.g-dash-types div.wiki {
+    border-right: 2px solid #a1b75e;
+}
+
+.g-dash-types-right div.debug {
+    border:none;
+    border-left: 2px solid #ebe;
+}
+
+.g-dash-types-right div.eng {
+    border:none;
+    border-left: 2px solid #ff9a9a;
+}
+
+.g-dash-types-right div.algorithm {
+    border:none;
+    border-left: 2px solid #8dffa5;
+}
+
+.g-dash-types-right div.wiki {
+    border:none;
+    border-left: 2px solid #a1b75e;
 }

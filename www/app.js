@@ -56,6 +56,7 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 			views: {
       			'dash': {
 					templateUrl : 'view/game/dash.html',
+					controller : 'GameDashController',
 					cache: false
 				}
 			}
@@ -75,6 +76,7 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 			views: {
       			'result': {
 					templateUrl : 'view/game/result.html',
+					controller : 'GameResultController',
 					cache: false
 				}
 			}
