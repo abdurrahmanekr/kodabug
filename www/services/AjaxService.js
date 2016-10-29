@@ -5,10 +5,16 @@ KodaBugApp.service('AjaxService', function ($http, $httpParamSerializerJQLike) {
 
 		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
-		var promise = $http.post(GLOBAL.serviceUrl + "login.php", $httpParamSerializerJQLike(data)).then(function (response) {
-			return response.data;
-		} , function (response) {
-			return response.data;
+		var promise = $http(common.ws({
+			service: "UserService",
+			method: "loginUser",
+			data: {
+				usid: data.name,
+				uspw: data.password
+			}
+		}))
+		.success(function(res) {
+			console.log(res);
 		})
 
 		return promise;

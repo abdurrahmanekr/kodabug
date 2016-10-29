@@ -1,5 +1,5 @@
 var GLOBAL = {
-	serviceUrl : "http://localhost/kodabug/",
+	serviceUrl : "http://localhost/kodabug/service/",
 	user: {
 		usid: null,
 		coins: null,

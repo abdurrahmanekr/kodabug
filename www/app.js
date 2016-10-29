@@ -18,8 +18,7 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 		.state('app', {
 			url : '/app',
 			abstract : true,
-			templateUrl : 'view/app.html',
-			controller : 'MainController'
+			templateUrl : 'view/app.html'
 		})
 		.state('app.main', {
 			url : '/main',

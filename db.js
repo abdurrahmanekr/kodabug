@@ -67,3 +67,13 @@ WINNER:
 		usid : "user_id",
 		windate : "winner_date",
 	}
+
+POINT:
+	{
+		usid: "user_id",
+		copo: "coins_point",
+		hepo: "heart_point",
+		bugpo: "bug_point",
+		fipo: "fire_point",
+		keypo: "fire_point"
+	}

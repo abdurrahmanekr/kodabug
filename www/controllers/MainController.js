@@ -1,6 +1,12 @@
 "use strict";
 
-KodaBugApp.controller('MainController', function ($scope, $state, $ionicHistory, PopupService) {
+KodaBugApp.controller('MainController', function ($scope, $rootScope, $state, $ionicHistory, PopupService, WebService) {
+	
+	WebService.getUserVCard(GLOBAL.user.usid).then(function(res) {
+    	$rootScope.myUser = res;
+    	GLOBAL.user = res;
+    });
+
 	$scope.logout = function () {
 		$state.go("login");
 		$ionicHistory.clearHistory();
