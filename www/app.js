@@ -85,5 +85,5 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 			templateUrl : 'view/login.html',
 			controller : 'LoginController'
 		});
-	$urlRouterProvider.otherwise('app/main');
+	$urlRouterProvider.otherwise('/login');
 });

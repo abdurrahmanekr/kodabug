@@ -44,7 +44,7 @@ KodaBugApp.service('GameService', function ($q) {
 					useBR: false
 				})
 				hljs.highlightBlock(pre);
-			} catch (e){
+			} catch (e) {
 				return;
 			}
 		}

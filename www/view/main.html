@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content class="has-header">
+    <ion-content class="has-header has-footer">
         <div class="list card new-game">
             <div class="item item-divider">
                 <center>Oynamak İçin Buga Tıkla</center>
@@ -10,15 +10,17 @@
         </div>
         <div class="list card">
             <div class="item item-divider">
-                <center>Şu an Oynadıklarım</center>
+                <center ng-if="games.length > 0">Şu an Oynadıklarım</center>
+                <center ng-if="games.length < 1">Henüz Oynadığın Oyun yok</center>
             </div>
-            <a class="item item-avatar" href="#">
-                <img src="resources/img/eker.png">
-                <h2>Kodçero</h2>
+            <a class="item item-avatar" ng-repeat="item in games">
+                <img ng-src="{{item.photo}}">
+                <h2>{{item.type}}</h2>
                 <p>
-                    <span class="badge badge-assertive">null - 5</span>
-                    12 Tem 2016 - <span class="assertive">Sıra Onda</span>
-                    <span class="balanced">Sıra Sende</span>
+                    <span class="badge badge-assertive">{{item.uspoint}} - {{item.rivalpoint}}</span>
+                    {{item.date | date: "dd MMM yy"}} - 
+                    <span class="balanced" ng-if="item.turn">Sıra Sende</span>
+                    <span class="assertive" ng-if="!item.turn">Sıra Onda</span>
                 </p>
             </a>
         </div>
@@ -26,7 +28,7 @@
             <div class="item item-divider">
                 <center>Bir Zamanlar Oynadıklarım</center>
             </div>
-            <a class="item item-avatar" href="#">
+            <a class="item item-avatar">
                 <img src="resources/img/eker.png">
                 <h2>Bugger</h2>
                 <p>

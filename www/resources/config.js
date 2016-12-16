@@ -6,6 +6,8 @@ var GLOBAL = {
 		heart: null,
 		bug: null,
 		fire: null,
-		key: null
+		key: null,
+		usname: null,
+		uspoint: null
 	}
 };

@@ -1,10 +1,18 @@
 "use strict";
 
-KodaBugApp.controller('MainController', function ($scope, $rootScope, $state, $ionicHistory, PopupService, WebService) {
-	
-	WebService.getUserVCard(GLOBAL.user.usid).then(function(res) {
-    	$rootScope.myUser = res;
+KodaBugApp.controller('MainController', function ($scope, $rootScope, $timeout, $state, $ionicHistory, PopupService, WebService) {
+
+	$rootScope.myUser = {};
+	$rootScope.games = {};
+    WebService.getUserVCard(GLOBAL.user.usid).then(function(res) {
+    	$timeout(function() {
+	    	$rootScope.myUser = res;
+    	});
     	GLOBAL.user = res;
+    });
+
+    WebService.getGameList().then(function(res) {
+    	$rootScope.games = res;
     });
 
 	$scope.logout = function () {
@@ -19,6 +27,9 @@ KodaBugApp.controller('MainController', function ($scope, $rootScope, $state, $i
 	};
 	
 	$scope.newGame = function () {
+		WebService.startGame().then(function(res) {
+			console.log(res);
+		});
 		$state.go("game.main.dash");
 	};
 

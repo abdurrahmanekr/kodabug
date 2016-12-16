@@ -2,16 +2,16 @@
 	<h1 class="title user-badges">
 		<div class="tabs">
 		    <a class="tab-item" ng-click="openCoins('heart')">
-		        <span class="balanced"><i class="ion-ios-heart"></i> 9</span>
+		        <span class="balanced"><i class="ion-ios-heart"></i> {{myUser.heart}}</span>
 		    </a>
 		    <a class="tab-item" ng-click="openCoins('bug')">
-				<span class="assertive"><i class="ion-bug"></i> 432</span>
+				<span class="assertive"><i class="ion-bug"></i> {{myUser.bug}}</span>
 		    </a>
 		    <a class="tab-item" ng-click="openCoins('fire')">
-				<span class="royal"><i class="ion-ios-flame"></i> 5</span>
+				<span class="royal"><i class="ion-ios-flame"></i> {{myUser.fire}}</span>
 		    </a>
 		    <a class="tab-item" ng-click="openCoins('key')">
-				<span class="dark"><i class="ion-key"></i> 5</span>
+				<span class="dark"><i class="ion-key"></i> {{myUser.key}}</span>
 		    </a>
 		</div>
 	</h1>
@@ -27,7 +27,7 @@
     <a class="tab-item" ng-click="test()">
     	İlham Ver
     </a>
-    <a class="tab-item" href="#/app/profile/1">
+    <a class="tab-item" href="#/app/profile/me">
         Profil
     </a>
 </ion-tabs>

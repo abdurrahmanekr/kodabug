@@ -19,12 +19,12 @@
         <img class="full-image" src="http://www.brautbox.de/local/albums/article1024/hochzeit-in-der-tuerkei_hpv.jpg"/>
         <div class="row">
             <div class="col">
-                <img class="full-image" src="https://avatars1.githubusercontent.com/u/15075759"/>
+                <img class="full-image" ng-src="{{user.photo}}"/>
             </div>
             <div class="col col-75">
                 <b>
-                    Abdurrahman Eker
-                    <button class="button button-small icon-left ion-person-add" style="float:right">Takip et</button>
+                    {{user.usname}}
+                    <button ng-if="!user.me" class="button button-small icon-left ion-person-add" style="float:right">Takip et</button>
                 </b>
                 <br/>
                 Debugger
@@ -32,13 +32,13 @@
                 <span class="assertive" style="font-size:40px">
                     <i class="ion-bug">
                     </i>
-                    956
+                    {{user.uspoint}}
                 </span>
             </div>
         </div>
         <!-- görev kartı -->
         <ion-list>
-            <div class="card">
+            <div class="card" ng-if="user.me">
                 <ion-item class="item-divider">
                     Görev Kartı - <span class="assertive">false</span>
                 </ion-item>
