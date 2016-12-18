@@ -3,7 +3,7 @@
 KodaBugApp.controller('LoginController', function($scope, $timeout, $state, $ionicModal, $ionicHistory, WebService, LoadingService, PopupService, AjaxService) {
 	$scope.user = {
 		name: "anonim1@kodabug.com",
-		password: "65536"
+		password: "1234"
 	};
 	$scope.login = function(data) {
 		if (data.usname == "")
