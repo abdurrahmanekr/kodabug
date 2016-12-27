@@ -1,28 +1,18 @@
 <ion-view>
-	<ion-content>
-		<div class="login">
+	<ion-content class="login">
+		<div class="grid">
+			<div class="logo">
+				<img src="resources/img/main.png" alt="">
+			</div>
 			<form onsubmit="return false">
-				<center>
-					<img class="col-50" ng-src="resources/img/main.png" style="margin-bottom:10px;"/>
-				</center>
-				<label class="item item-input item-floating-label">
-					<span class="input-label">Kullanıcı Adı</span>
-					<input placeholder="Kullanıcı Adı" ng-model="user.name" type="text">
-				</label>
-				<label class="item item-input item-floating-label">
-					<span class="input-label">Şifre</span>
-					<input placeholder="Şifre" ng-model="user.password" type="password">
-				</label>
-				<div class="padding">
-					<button class="button button-block button-positive" ng-click="login(user)" type="submit">
-						Giriş Yap <i class="ion-log-in"></i>
-					</button>
-				</div>
-				<div class="padding">
-					<button class="button button-block button-positive" ng-click="register()">
-						Kayıt ol <i class="ion-log-in"></i>
-					</button>
-				</div>
+				<input class="input" placeholder="Kullanıcı Adı" ng-model="user.name" type="text">
+				<input class="input" placeholder="Şifre" ng-model="user.password" type="password">
+				<button class="button button-block button-positive" ng-click="login(user)" type="submit">
+					Giriş Yap <i class="ion-log-in"></i>
+				</button>
+				<!-- <button class="button button-block button-positive" ng-click="register()">
+					Kayıt ol <i class="ion-log-in"></i>
+				</button> -->
 			</form>
 		</div>
 	</ion-content>

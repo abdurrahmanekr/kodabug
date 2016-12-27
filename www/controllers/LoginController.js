@@ -32,12 +32,17 @@ KodaBugApp.controller('LoginController', function($scope, $timeout, $state, $ion
 					}, 1100);
 					localStorage.setItem("auth", res.auth);
 				} else {
-					LoadingService.show("Giriş Olmadı", false);
+					LoadingService.show("Kullanıcı adınız veya Şifreniz Yanlış", false);
 					$timeout(function() {
 						LoadingService.hide();
 					}, 1000);
 				}
-			})
+			}, function(res) {
+				LoadingService.show("İnternet Bağlantınızı Kontrol Edip Tekrar Deneyin", false);
+				$timeout(function() {
+					LoadingService.hide();
+				}, 2000);
+			});
 		}
 	};
 

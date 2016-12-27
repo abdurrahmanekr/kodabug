@@ -6,13 +6,6 @@ pre, code, pre code {
 	font-family: monospace;
 }
 
-.login {
-	padding: 10px;
-	position: absolute;
-	right: 0;
-	left: 0;
-}
-
 .user-badges span {
 	margin-right: 5px;
 	margin-left: 5px;
