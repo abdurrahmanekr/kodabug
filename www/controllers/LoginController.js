@@ -31,6 +31,7 @@ KodaBugApp.controller('LoginController', function($scope, $timeout, $state, $ion
 						$ionicHistory.clearHistory();
 					}, 1100);
 					localStorage.setItem("session_ticket", res.session_ticket);
+					localStorage.setItem("usid", $scope.user.name);
 				} else {
 					LoadingService.show("Kullanıcı adınız veya Şifreniz Yanlış", false);
 					$timeout(function() {

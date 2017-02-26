@@ -4,7 +4,7 @@ KodaBugApp.controller('MainController', function ($scope, $rootScope, $timeout, 
 
 	$rootScope.myUser = {};
 	$rootScope.games = {};
-    WebService.getUserVCard(GLOBAL.user.usid).then(function(res) {
+    WebService.getUserVCard(localStorage.getItem("usid")).then(function(res) {
     	$timeout(function() {
 	    	$rootScope.myUser = res;
     	});
@@ -29,7 +29,7 @@ KodaBugApp.controller('MainController', function ($scope, $rootScope, $timeout, 
 		var rnd = parseInt((Math.random() * 100) % 5);
         PopupService.open("İlham Geliyor", ilhams[rnd], "Tamam");
 	};
-	
+
 	$scope.newGame = function () {
 		LoadingService.show("Yeni biri bulunuyor...", true);
 		WebService.startGame().then(function(res) {
