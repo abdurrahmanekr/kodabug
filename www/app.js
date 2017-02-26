@@ -36,6 +36,11 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 			templateUrl : 'view/profile.html',
 			controller : 'ProfileController'
 		})
+		.state("app.contribution", {
+			url: "/contribution",
+			templateUrl : 'view/contribution.html',
+			controller : 'ContributionController'			
+		})
 		
 		//----------------------------------
 
@@ -85,5 +90,5 @@ KodaBugApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProv
 			templateUrl : 'view/login.html',
 			controller : 'LoginController'
 		});
-	$urlRouterProvider.otherwise('/login');
+	$urlRouterProvider.otherwise('/app/contribution');
 });

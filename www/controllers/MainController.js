@@ -1,6 +1,6 @@
 "use strict";
 
-KodaBugApp.controller('MainController', function ($scope, $rootScope, $timeout, $state, $ionicHistory, PopupService, WebService) {
+KodaBugApp.controller('MainController', function ($scope, $rootScope, $timeout, $state, $ionicHistory, LoadingService, PopupService, WebService) {
 
 	$rootScope.myUser = {};
 	$rootScope.games = {};
@@ -12,6 +12,10 @@ KodaBugApp.controller('MainController', function ($scope, $rootScope, $timeout, 
     });
 
     WebService.getGameList().then(function(res) {
+    	if (res.count === 0) {
+    		$rootScope.games = [];
+    		return;
+    	}
     	$rootScope.games = res;
     });
 
@@ -27,10 +31,12 @@ KodaBugApp.controller('MainController', function ($scope, $rootScope, $timeout, 
 	};
 	
 	$scope.newGame = function () {
+		LoadingService.show("Yeni biri bulunuyor...", true);
 		WebService.startGame().then(function(res) {
-			console.log(res);
+			LoadingService.hide();
+			$rootScope.startedGame = res;
+			$state.go("game.main.dash");
 		});
-		$state.go("game.main.dash");
 	};
 
 	$scope.openCoins = function (type) {

@@ -10,7 +10,7 @@ var common = {
 			url: GLOBAL.serviceUrl + ws.service
 		};
 		ws.data.method = ws.method;
-		ws.data = btoa(JSON.stringify(ws.data));	
+		ws.data = Base64.encode(JSON.stringify(ws.data));
 		if (ws.type == "GET")
 			result.params = {
 				data: ws.data
@@ -21,11 +21,11 @@ var common = {
 	},
 
 	identicon : function (text, size) {
-	    var size = size || 210;
-	    var shaObj = new jsSHA(text + '0', "TEXT");
-	    var hash = shaObj.getHash("SHA-512", "HEX", 1);
-	    var data = new Identicon(hash, size).toString();
-	    return "data:image/png;base64," + data;
+		var size = size || 210;
+		var shaObj = new jsSHA(text + '0', "TEXT");
+		var hash = shaObj.getHash("SHA-512", "HEX", 1);
+		var data = new Identicon(hash, size).toString();
+		return "data:image/png;base64," + data;
 	}
 
 }

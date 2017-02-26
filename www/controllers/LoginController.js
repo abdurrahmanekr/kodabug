@@ -2,8 +2,8 @@
 
 KodaBugApp.controller('LoginController', function($scope, $timeout, $state, $ionicModal, $ionicHistory, WebService, LoadingService, PopupService, AjaxService) {
 	$scope.user = {
-		name: "anonim1@kodabug.com",
-		password: "1234"
+		name: "info@avarekodcu.com",
+		password: "AvareAvareÇÇ::"
 	};
 	$scope.login = function(data) {
 		if (data.usname == "")
@@ -30,7 +30,7 @@ KodaBugApp.controller('LoginController', function($scope, $timeout, $state, $ion
 						$state.go("app.main");
 						$ionicHistory.clearHistory();
 					}, 1100);
-					localStorage.setItem("auth", res.auth);
+					localStorage.setItem("session_ticket", res.session_ticket);
 				} else {
 					LoadingService.show("Kullanıcı adınız veya Şifreniz Yanlış", false);
 					$timeout(function() {
@@ -90,7 +90,7 @@ KodaBugApp.controller('LoginController', function($scope, $timeout, $state, $ion
 							$ionicHistory.clearHistory();
 						}, 1000);
 						GLOBAL.user.usid = $scope.regUser.mail;
-						localStorage.setItem("auth", res.auth);
+						localStorage.setItem("session_ticket", res.session_ticket);
 						localStorage.setItem("user", $scope.regUser.mail)
 					}
 					console.log(res);

@@ -1,6 +1,6 @@
 "use strict";
 
-KodaBugApp.controller('GameDashController', function ($scope, $state, GameService) {
+KodaBugApp.controller('GameDashController', function ($scope, $rootScope, $http, $state, GameService) {
 	$scope.game = {
 		title: ""
 	};

@@ -1,11 +1,20 @@
 "use strict";
 
-KodaBugApp.service('GameService', function ($q) {
+KodaBugApp.service('GameService', function ($http, $q) {
 	
 	return {
 
-		getGame: function (gameId) {
+		getGame: function () {
 			var deferred = $q.defer();
+			$http(common.ws({
+				service: "GameService",
+				method: "getGame",
+				data: {}
+			})).success(function(res) {
+				console.log(res);
+			}).error(function() {
+
+			})
 			deferred.resolve(
 			// {
 			// 	question: "E = m.c^2 formülü kime aittir ?",

@@ -2,8 +2,9 @@
 
 KodaBugApp.controller('GamePlayController', function($scope, $rootScope, $stateParams, $state, $timeout, $ionicHistory, $animate, GameService, LoadingService, PopupService) {
     $scope.gameId = $stateParams.gameId;
+    LoadingService.hide();
     
-    GameService.getGame($scope.gameId).then(function(res) {
+    GameService.getGame().then(function(res) {
 
         $scope.game = {
 	    	question: $scope.gameId + res.question,

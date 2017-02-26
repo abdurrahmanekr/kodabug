@@ -40,7 +40,7 @@ KodaBugApp.service('WebService', function ($q, $http) {
 				service: "GameService",
 				method: "getGameList",
 				data: {
-					auth: localStorage.getItem("auth")
+					session_ticket: localStorage.getItem("session_ticket")
 				}
 			})).success(function(res) {
 				res = res.result;
@@ -60,12 +60,36 @@ KodaBugApp.service('WebService', function ($q, $http) {
 				service: "GameService",
 				method: "startGame",
 				data: {
-					auth: localStorage.getItem("auth")
+					session_ticket: localStorage.getItem("session_ticket")
 				}
 			})).success(function(res) {
 				res = res.result;
 				if (res == -1)
 					return;
+
+				deferred.resolve(res);
+			});
+
+			return deferred.promise;
+		},
+
+		uploadGame: function(data) {
+			var deferred = $q.defer();
+
+			$http(common.ws({
+				service: "RegisterService",
+				method: "uploadGame",
+				data: {
+					question_name: data.question_name,
+					question_type: 1,
+					question_option: data.question_option,
+					question_true: data.question_true,
+					session_ticket: localStorage.getItem("session_ticket")
+				}
+			})).success(function(res) {
+				res = res.result;
+				if (res == -1)
+					deferred.resolve(false);
 
 				deferred.resolve(res);
 			});
