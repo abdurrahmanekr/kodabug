@@ -16,7 +16,7 @@ export default class Main extends Component {
 		return (
 			<View
 				style={style.body}>
-				<Text>main</Text>
+				<Text>selamun aleyküm hocam</Text>
 			</View>
 		);
 	}
