@@ -12,6 +12,10 @@ import {
 import {Actions} from 'react-native-router-flux';
 import {setSessionTicket} from '../../common/index';
 
+import {
+	UserService
+} from '../../services/'
+
 export default class Login extends Component {
 
 	constructor(props) {
@@ -22,17 +26,15 @@ export default class Login extends Component {
 		}
 	}
 
-	girisYap(){
-		var data = '{"method":"loginUser","usname":"'+this.state.userName+'","password":"'+this.state.userPassword+'"}';
-		fetch("http://192.168.1.41/kodabugapi/service/UserService?data="+data)
-		.then((res) => res.json()).then((res) => {
+	loginUser(){
+		UserService.loginUser(this.state.userName, this.state.userPassword).then(res => {
 			if(res.result.username != "-1" && res.result.password != "-1"){
 				Actions.Main({type: 'reset'})
 				setSessionTicket(String(res.result.session_ticket));
 			}else{
 				Alert.alert("hayır!");
 			}
-		});
+		})
 	}
 
 	render() {
@@ -48,7 +50,7 @@ export default class Login extends Component {
 					value={this.state.userPassword}
 					onChangeText={(value) => this.setState({userPassword: value})}/>
 
-				<Button onPress={this.girisYap.bind(this)} title="Giriş yap"/>
+				<Button onPress={this.loginUser.bind(this)} title="Giriş yap"/>
 
 				<TouchableOpacity style={style.signup} onPress={() => Actions.Register()}>
 					<Text style={{fontSize: 14, color: "#3498db"}}>Kayıt ol</Text>
