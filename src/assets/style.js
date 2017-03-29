@@ -1,6 +1,7 @@
 import startCss from './css/start-css';
 import loginCss from './css/login-css';
 import mainCss from './css/main-css';
+import registerCss from './css/register-css';
 
 
 export default function getCss(page) {
@@ -11,6 +12,8 @@ export default function getCss(page) {
 			return loginCss();
 		case 'main':
 			return mainCss();
+		case 'register':
+			return registerCss();
 		default:
 			return {
 				body: {

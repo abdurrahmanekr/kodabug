@@ -9,7 +9,7 @@ export default function startCss() {
 		loading: {
 			alignItems: 'center',
 		    justifyContent: 'center',
-		    padding: 8,
+		    padding: 20,
 		}
 	}
 }
