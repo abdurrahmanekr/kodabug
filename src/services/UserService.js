@@ -19,8 +19,8 @@ class UserService extends EventEmitter {
 	 * @name: kullanıcı adı
 	 * @pass: kullanıcı şifresi
 	*/
-	async loginUser(name, pass) {
-		return loginUser(name, pass).then(res => {
+	async loginUser(method, name, pass) {
+		return loginUser(method, name, pass).then(res => {
 			return res;
 		})
 	}

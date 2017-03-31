@@ -27,7 +27,7 @@ export default class Login extends Component {
 	}
 
 	loginUser(){
-		UserService.loginUser(this.state.userName, this.state.userPassword).then(res => {
+		UserService.loginUser("loginUser", this.state.userName, this.state.userPassword).then(res => {
 			if(res.result.username != "-1" && res.result.password != "-1"){
 				Actions.Main({type: 'reset'})
 				setSessionTicket(String(res.result.session_ticket));
