@@ -1,18 +1,37 @@
 import {
-	encodeServiceData
+	encodeServiceData,
+	getArgs,
+	argumentsToData
 } from '../common/index'
 
-export async function loginUser (name, pass) {
-	var data = {
-		method: 'loginUser',
-		usname: name,
-		password: pass
-	};
+import Config from '../common/config';
 
+export async function loginUser() {
+	let data = argumentsToData('loginUser', arguments);
 	let url = encodeServiceData('UserService', data);
 	return fetch(url)
 	.then((res) => res.json())
 	.then((res) => {
 		return res;
 	});
+}
+
+export async function registerUser(){
+	let data = argumentsToData('register', arguments);
+	let url = encodeServiceData('RegisterService', data);
+	return fetch(url)
+	.then((res) => res.json())
+	.then((res) => {
+		return res;
+	});
+}
+
+export async function uploadGame(){
+	let data = argumentsToData('uploadGame', arguments);
+	let url = encodeServiceData('RegisterService', data);
+	return fetch(url)
+	.then((res) => res.json())
+	.then((res) => {
+		return res;
+	})
 }

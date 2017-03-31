@@ -10,6 +10,10 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
+import {
+	RegisterService
+} from '../../services/'
+
 
 export default class Register extends Component{
 	constructor(props){
@@ -19,14 +23,14 @@ export default class Register extends Component{
 			surname: "",
 			usmail: "",
 			password: "",
-			birth: ""
+			birth: "",
+			text: ''
 		}
 	}
 
-	kayitOl(){
-		var data = '{"method": "register","usname": "'+this.state.usname+'","surname": "'+this.state.surname+'","usmail": "'+this.state.usmail+'","password": "'+this.state.password+'","birth": "'+this.state.birth+'"}';
-		fetch("http://192.168.1.41/kodabugapi/service/RegisterService?data="+data)
-		.then((res) => res.json()).then((res) => {
+	registerUser(){
+		RegisterService.registerUser("register", this.state.usname, this.state.surname, this.state.usmail, this.state.password, this.state.birth)
+		.then((res) => {
 			if(res.result.exist != "1" && res.result.session_ticket){
 				Alert.alert("Kayıt başarılı!");
 				Actions.pop();
@@ -64,7 +68,7 @@ export default class Register extends Component{
 					value={this.state.birth}
 					onChangeText={(value) => this.setState({birth: value})}/>
 
-				<Button onPress={this.kayitOl.bind(this)} title="Kaydı tamamla"/>		
+				<Button onPress={this.registerUser.bind(this)} title="Kaydı tamamla"/>
 			</View>
 		)
 	}
