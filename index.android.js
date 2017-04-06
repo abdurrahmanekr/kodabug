@@ -12,12 +12,12 @@ import Register from './src/pages/register/register';
 export default class kodabug extends Component {
 	render() {
 		const scenes = Actions.create(
-		  <Scene key="root">
-		  	<Scene key="Start" component={Start} hideNavBar={true}/>
-		  	<Scene key="Main" component={Main} hideNavBar={true}/>
-		  	<Scene key="Login" component={Login} hideNavBar={true}/>
-		    <Scene key="Register" component={Register} hideNavBar={false}/>
-		  </Scene>
+			<Scene key="root">
+				<Scene key="Start" component={Start} hideNavBar={true}/>
+				<Scene key="Main" component={Main} hideNavBar={true}/>
+				<Scene key="Login" component={Login} hideNavBar={true}/>
+				<Scene key="Register" component={Register} hideNavBar={false}/>
+			</Scene>
 		);
 
 		return <Router scenes={scenes}/>
