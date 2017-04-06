@@ -6,7 +6,9 @@ import {
 	TextInput,
 	Button,
 	Alert,
-	TouchableOpacity
+	TouchableOpacity,
+	Image,
+	ScrollView
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
@@ -40,21 +42,68 @@ export default class Login extends Component {
 	render() {
 		return (
 			<View style={style.body}>
-				<TextInput
-					placeholder="Kullanıcı adı"
-					value={this.state.userName}
-					onChangeText={(value) => this.setState({userName: value})}/>
+				<ScrollView
+					style={style.login_container}>
+					<View
+						style={style.logo_container}>
+						<Image
+							source={require('../../assets/images/kodabug.png')}
+							style={style.logo}/>
+					</View>
 
-				<TextInput
-					placeholder="Şifre"
-					value={this.state.userPassword}
-					onChangeText={(value) => this.setState({userPassword: value})}/>
+					<Text
+						style={style.try_text}>try {'{'}</Text>
 
-				<Button onPress={this.loginUser.bind(this)} title="Giriş yap"/>
+					<TextInput
+						placeholder="Kullanıcı adı || E-posta"
+						underlineColorAndroid="transparent"
+						value={this.state.userName}
+						onChangeText={(value) => this.setState({userName: value})}
+						style={style.input}/>
 
-				<TouchableOpacity style={style.signup} onPress={() => Actions.Register()}>
-					<Text style={{fontSize: 14, color: "#3498db"}}>Kayıt ol</Text>
-				</TouchableOpacity>
+					<TextInput
+						placeholder="Şifre"
+						underlineColorAndroid="transparent"
+						value={this.state.userPassword}
+						onChangeText={(value) => this.setState({userPassword: value})}
+						style={style.input}/>
+
+					<TouchableOpacity
+						onPress={this.loginUser.bind(this)}
+						style={style.login_button}>
+						<Text
+							style={style.login_button_text}>Giriş yap</Text>
+					</TouchableOpacity>
+					<View
+						style={style.catch_text_container}>
+						<Text
+							style={style.try_text}>{'} catch (e) {'}</Text>
+
+						<TouchableOpacity>
+							<Text
+								style={style.catch_text}>{'sorun_var(e)'}</Text>
+						</TouchableOpacity>
+
+						<Text
+							style={style.try_text}>{'}'}</Text>
+					</View>
+
+
+				</ScrollView>
+				<View
+					style={style.footer}>
+					<TouchableOpacity
+						style={style.signup}>
+						<Text>Hesabın mı yok ?</Text>
+							<TouchableOpacity
+								onPress={() => Actions.Register()}>
+								<Text
+									style={style.signup_text}>{'kaydol()'}</Text>
+							</TouchableOpacity>
+						<Text>: goto kodabug</Text>
+					</TouchableOpacity>
+				</View>
+
 			</View>
 		);
 	}
