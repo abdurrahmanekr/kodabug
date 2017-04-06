@@ -17,7 +17,7 @@ export default class kodabug extends Component {
 			<Scene key="Start" component={Start} hideNavBar={true}/>
 			<Scene key="Main" component={Main} hideNavBar={true}/>
 			<Scene key="Login" component={Login} hideNavBar={true}/>
-			<Scene key="Register" component={Register} hideNavBar={false}/>
+			<Scene key="Register" component={Register} hideNavBar={true}/>
 		    <Scene key="SendGame" component={SendGame}/>
 		  </Scene>
 		);
