@@ -8,16 +8,18 @@ import Start from './src/pages/start/start';
 import Login from './src/pages/login/login';
 import Main from './src/pages/main/main';
 import Register from './src/pages/register/register';
+import SendGame from './src/pages/main/tabs/contributions-tab/send-game';
 
 export default class kodabug extends Component {
 	render() {
 		const scenes = Actions.create(
-			<Scene key="root">
-				<Scene key="Start" component={Start} hideNavBar={true}/>
-				<Scene key="Main" component={Main} hideNavBar={true}/>
-				<Scene key="Login" component={Login} hideNavBar={true}/>
-				<Scene key="Register" component={Register} hideNavBar={false}/>
-			</Scene>
+		  <Scene key="root">
+			<Scene key="Start" component={Start} hideNavBar={true}/>
+			<Scene key="Main" component={Main} hideNavBar={true}/>
+			<Scene key="Login" component={Login} hideNavBar={true}/>
+			<Scene key="Register" component={Register} hideNavBar={false}/>
+		    <Scene key="SendGame" component={SendGame}/>
+		  </Scene>
 		);
 
 		return <Router scenes={scenes}/>
