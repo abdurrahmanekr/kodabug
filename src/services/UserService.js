@@ -20,8 +20,14 @@ class UserService extends EventEmitter {
 	 * @pass: kullanıcı şifresi
 	*/
 	async loginUser(method, name, pass) {
-		return loginUser(method, name, pass).then(res => {
-			return res;
+		return new Promise((resolve, reject) => {
+			loginUser(method, name, pass).then(res => {
+				if (res === 'connection_error') {
+					reject(res);
+					return;
+				}
+				resolve(res);
+			})
 		})
 	}
 }

@@ -12,7 +12,10 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
-import {setSessionTicket} from '../../common/index';
+import {
+	setSessionTicket,
+	handleErrorAlert
+} from '../../common/index';
 
 import {
 	UserService
@@ -28,15 +31,27 @@ export default class Login extends Component {
 		}
 	}
 
-	loginUser(){
-		UserService.loginUser("loginUser", this.state.userName, this.state.userPassword).then(res => {
-			if(res.result.username != "-1" && res.result.password != "-1"){
-				Actions.Main({type: 'reset'})
-				setSessionTicket(String(res.result.session_ticket));
-			}else{
-				Alert.alert("hayır!");
-			}
-		})
+	loginUser() {
+		let user = {
+			name: this.state.userName,
+			pass: this.state.userPassword
+		};
+		if (user.name !== '' && user.pass !== '') {
+			UserService.loginUser("loginUser", user.name, user.pass).then(res => {
+				debugger;
+				let user = res.result;
+				if (user.username !== -1 && user.password !== -1) {
+					setSessionTicket(String(user.session_ticket));
+					Actions.Main({type: 'reset'})
+				} else {
+					handleErrorAlert('invalid_user');
+				}
+			}, err => {
+				handleErrorAlert(err);
+			})
+		} else {
+			handleErrorAlert('null_login_user');
+		}
 	}
 
 	render() {

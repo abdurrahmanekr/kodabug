@@ -43,7 +43,6 @@ export default class MainTab extends Component {
 	render() {
 		return (
 			<View style={style.body}>
-
 				<View style={style.header}>
 					<View style={style.headerIconBox}>
 						<Ionicon name="md-heart" size={30} color="#ff0000" />
@@ -64,16 +63,16 @@ export default class MainTab extends Component {
 
 				</View>
 
-				<View style={style.startGameArea}>
-					<Text style={style.startGameAreaTitle}>Oynamak için tıkla</Text>
-					<Image
-						source={require('../../../../../docs/template/logo.png')}
-						style={style.startGameAreaImage} />
-				</View>
+				<ScrollView>
+					<View style={style.startGameArea}>
+						<Text style={style.startGameAreaTitle}>Oynamak için tıkla</Text>
+						<Image
+							source={require('../../../../assets/images/kodabug.png')}
+							style={style.startGameAreaImage} />
+					</View>
 
-				<View style={style.gameList}>
-					<Text style={style.gameListTitle}>Sıradaki Oyunlar</Text>
-					<ScrollView style={style.gameListScroll}>
+					<View style={style.gameList}>
+						<Text style={style.gameListTitle}>Sıradaki Oyunlar</Text>
 						{
 							this.state.games.map((game, key) => {
 								return(
@@ -88,9 +87,8 @@ export default class MainTab extends Component {
 								)
 							})
 						}
-					</ScrollView>
-				</View>
-
+					</View>
+				</ScrollView>
 			</View>
 		);
 	}

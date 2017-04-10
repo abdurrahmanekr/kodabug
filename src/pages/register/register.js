@@ -13,10 +13,15 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
+
 import {
 	RegisterService
 } from '../../services/'
 
+import {
+	handleErrorAlert,
+	setSessionTicket
+} from '../../common/';
 
 export default class Register extends Component{
 	constructor(props){
@@ -31,16 +36,35 @@ export default class Register extends Component{
 		}
 	}
 
-	registerUser(){
-		RegisterService.registerUser("register", this.state.usname, this.state.surname, this.state.usmail, this.state.password, this.state.birth)
-		.then((res) => {
-			if(res.result.exist != "1" && res.result.session_ticket){
-				Alert.alert("Kayıt başarılı!");
-				Actions.pop();
-			}else{
-				Alert.alert("Mail adresi kullanılmakta.");
-			}
-		});
+	registerUser() {
+		if (this.state.usname !== '' &&
+			this.state.surname !== '' &&
+			this.state.usmail !== ''  &&
+			this.state.password !== '' &&
+			this.state.birth !== '') {
+			RegisterService.registerUser(
+				"register",
+				this.state.usname,
+				this.state.surname,
+				this.state.usmail,
+				this.state.password,
+				this.state.birth
+			).then(res => {
+				if (res.result === -1)
+					handleErrorAlert('invalid_register_user')
+				else if (res.result.exist === 1)
+					handleErrorAlert('register_user_exist')
+				else {
+					Alert.alert("Kayıt başarılı!");
+					setSessionTicket(String(res.result.session_ticket));
+					Actions.Main({type: 'reset'});
+				}
+			}, err => {
+				handleErrorAlert('register_user_failed')
+			});
+		} else {
+			handleErrorAlert('null_register_user')
+		}
 	}
 
 	render(){

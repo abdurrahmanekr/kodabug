@@ -4,8 +4,7 @@ export default function mainTabCss() {
 			flex: 1
 		},
 		header: {
-			flex: 1,
-			height: 10,
+			height: 50,
 			flexDirection: 'row',
 			backgroundColor: '#402000'
 		},
@@ -25,13 +24,10 @@ export default function mainTabCss() {
 			borderRadius: 10,
 			color: "#fff"
 		},
-
 		startGameArea: {
-			flex: 4,
 			backgroundColor: "#fff9e2",
 			alignItems: 'center',
-			margin: 10,
-			marginBottom: 0,
+			margin: 10
 		},
 		startGameAreaTitle: {
 			fontSize: 25,

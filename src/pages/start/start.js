@@ -17,9 +17,9 @@ export default class Start extends Component {
 	async isLogin() {
 		var present = this;
 		isLogin().then((res) => {
-			// if(res)
-			// 	Actions.Main({type: 'reset'});
-			// else
+			if(res)
+				Actions.Main({type: 'reset'});
+			else
 				Actions.Login({type: 'reset'});
 		});
 	}
@@ -28,7 +28,7 @@ export default class Start extends Component {
 		return (
 			<View
 				style={style.body}>
-				<Text>Start Page</Text>
+				<Text>Yükleniyor...</Text>
 			</View>
 		);
 	}
