@@ -7,6 +7,7 @@ import CustomTabBar from './tabs/custom-tab-bar';
 
 import ContributionsTab from './tabs/contributions-tab/contributions-tab';
 import MainTab from './tabs/main-tab/main-tab';
+import GlobalTab from './tabs/global-tab/global-tab';
 
 export default class Main extends Component {
 	constructor(props) {
@@ -19,7 +20,7 @@ export default class Main extends Component {
 				<MainTab tabLabel="ios-home"/>
 				<ContributionsTab tabLabel="ios-git-pull-request-outline"/>
 				<Text tabLabel="ios-people">Topluluk</Text>
-				<Text tabLabel="ios-keypad">Global Menü</Text>
+				<GlobalTab tabLabel="ios-keypad"></GlobalTab>
 			</ScrollableTabView>
 		);
 	}

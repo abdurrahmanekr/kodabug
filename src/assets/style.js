@@ -5,6 +5,7 @@ import registerCss from './css/register-css';
 import contributionsCss from './css/contributions-css';
 import sendGameCss from './css/send-game-css';
 import mainTabCss from './css/main-tab-css';
+import globalTabCss from './css/global-tab-css';
 
 
 export default function getCss(page) {
@@ -23,6 +24,8 @@ export default function getCss(page) {
 			return contributionsCss();
 		case 'main-tab':
 			return mainTabCss();
+		case 'global-tab':
+			return globalTabCss();
 		default:
 			return {
 				body: {
