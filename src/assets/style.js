@@ -3,6 +3,7 @@ import loginCss from './css/login-css';
 import mainCss from './css/main-css';
 import registerCss from './css/register-css';
 import contributionsCss from './css/contributions-css';
+import communityTabCss from './css/community-tab-css';
 import sendGameCss from './css/send-game-css';
 import mainTabCss from './css/main-tab-css';
 import globalTabCss from './css/global-tab-css';
@@ -26,6 +27,8 @@ export default function getCss(page) {
 			return mainTabCss();
 		case 'global-tab':
 			return globalTabCss();
+		case 'community-tab':
+			return communityTabCss();
 		default:
 			return {
 				body: {
