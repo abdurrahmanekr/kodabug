@@ -9,6 +9,7 @@ import Login from './src/pages/login/login';
 import Main from './src/pages/main/main';
 import Register from './src/pages/register/register';
 import SendGame from './src/pages/main/tabs/contributions-tab/send-game';
+import {setCustomText} from 'react-native-global-props';
 
 export default class kodabug extends Component {
 	render() {
@@ -25,5 +26,12 @@ export default class kodabug extends Component {
 		return <Router scenes={scenes}/>
 	}
 }
+
+const customTextProps = {
+  style: {
+    fontFamily: 'OpenSans-Light'
+  }
+}
+setCustomText(customTextProps);
 
 AppRegistry.registerComponent('kodabug', () => kodabug);
