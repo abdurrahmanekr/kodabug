@@ -5,7 +5,8 @@ import {
 } from 'react-native';
 
 import {
-	loginUser
+	loginUser,
+	getUserVCard
 } from '../providers/WebService';
 
 class UserService extends EventEmitter {
@@ -29,6 +30,17 @@ class UserService extends EventEmitter {
 				resolve(res);
 			})
 		})
+	}
+
+	/*
+	 * Bir kullanıcının basit ve sade bir biçimde bilgilerini getirmeyi sağlar.
+	 * @usid: kullanıcı adı veya maili
+	 * @session_ticket: kullanıcının session_ticket bilgisi
+	*/
+	async getUserVCard(method, usid, session_ticket){
+		return getUserVCard(method, usid, session_ticket).then(res => {
+			return res;
+		});
 	}
 }
 

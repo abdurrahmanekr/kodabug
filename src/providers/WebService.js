@@ -44,3 +44,16 @@ export async function uploadGame(){
 		return 'connection_error'
 	});
 }
+
+export async function getUserVCard(){
+	let data = argumentsToData('getUserVCard', arguments);
+	let url = encodeServiceData('UserService', data);
+	return fetch(url)
+	.then(res => res.json())
+	.then(res => {
+		return res;
+	})
+	.catch(res => {
+		return 'connection_error'
+	});
+}

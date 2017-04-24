@@ -16,7 +16,6 @@ import {
 	setSessionTicket,
 	handleErrorAlert
 } from '../../common/index';
-
 import {
 	UserService
 } from '../../services/'
@@ -38,7 +37,6 @@ export default class Login extends Component {
 		};
 		if (user.name !== '' && user.pass !== '') {
 			UserService.loginUser("loginUser", user.name, user.pass).then(res => {
-				debugger;
 				let user = res.result;
 				if (user.username !== -1 && user.password !== -1) {
 					setSessionTicket(String(user.session_ticket));

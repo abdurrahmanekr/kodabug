@@ -9,6 +9,9 @@ import {
 	Alert
 } from 'react-native';
 
+import {UserService} from '../../../../services';
+import {getSessionTicket} from '../../../../common';
+
 import Ionicon from 'react-native-vector-icons/Ionicons'; // icon kütüphanesi
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicon from 'react-native-vector-icons/Octicons';
@@ -36,8 +39,28 @@ export default class MainTab extends Component {
 					avatarUri: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png',
 					date: 'Bugün 01:20'
 				}
-			]
+			],
+			points: {
+					hepo: "",
+					bugpo: "",
+					fipo: "",
+					keypo: "",
+			}
 		}
+		this.getUserVCard();
+	}
+
+	async getUserVCard(){
+		getSessionTicket().then(sessionTicket => {
+			UserService.getUserVCard("getUserVCard", "vay@samet.com", sessionTicket).then(res => {
+				this.setState({
+					hepo: res.result.hepo,
+					bugpo: res.result.bugpo,
+					fipo: res.result.fipo,
+					keypo: res.result.keypo
+				})
+			});
+		});
 	}
 
 	render() {
@@ -46,19 +69,19 @@ export default class MainTab extends Component {
 				<View style={style.header}>
 					<View style={style.headerIconBox}>
 						<Ionicon name="md-heart" size={30} color="#ff0000" />
-						<Text style={[style.iconText, {backgroundColor: "#ff0000"}]}>5</Text>
+						<Text style={[style.iconText, {backgroundColor: "#ff0000"}]}>{this.state.hepo}</Text>
 					</View>
 					<View style={style.headerIconBox}>
 						<Ionicon name="ios-bug" size={30} color="#ffab2e" />
-						<Text style={[style.iconText, {backgroundColor: '#ffab2e'}]}>0</Text>
+						<Text style={[style.iconText, {backgroundColor: '#ffab2e'}]}>{this.state.bugpo}</Text>
 					</View>
 					<View style={style.headerIconBox}>
 						<FontAwesome name="microchip" size={30} color="#cd4eff" />
-						<Text style={[style.iconText, {backgroundColor: '#cd4eff'}]}>100</Text>
+						<Text style={[style.iconText, {backgroundColor: '#cd4eff'}]}>{this.state.fipo}</Text>
 					</View>
 					<View style={style.headerIconBox}>
 						<Octicon name="key" size={30} color="#2eff99" />
-						<Text style={[style.iconText, {backgroundColor: '#2eff99'}]}>3</Text>
+						<Text style={[style.iconText, {backgroundColor: '#2eff99'}]}>{this.state.keypo}</Text>
 					</View>
 
 				</View>

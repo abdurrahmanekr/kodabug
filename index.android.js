@@ -29,7 +29,7 @@ export default class kodabug extends Component {
 
 const customTextProps = {
   style: {
-    fontFamily: 'OpenSans-Light'
+    fontFamily: 'OpenSans-Regular'
   }
 }
 setCustomText(customTextProps);

@@ -22,6 +22,11 @@ var _Config = {
 			"method": "",
 			"usname": "",
 			"password": ""
+		},
+		getUserVCard: {
+			"method": "",
+			"usid": "",
+			"session_ticket": ""
 		}
 	},
 	init: function(x){

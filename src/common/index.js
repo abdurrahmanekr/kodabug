@@ -3,7 +3,7 @@ import {
 	Alert
 } from 'react-native';
 
-import Config from '../common/config'
+import Config from '../common/config';
 
 export async function isLogin() {
 	var session = await AsyncStorage.getItem("session_ticket");
@@ -21,7 +21,7 @@ export function deleteSessionTicket(){
 }
 
 export function getSessionTicket(){
-	return AsyncStorage.getItem("session_ticket");
+	return AsyncStorage.getItem('session_ticket');
 }
 
 export function encodeServiceData(service, params) {
