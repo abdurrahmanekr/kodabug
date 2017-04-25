@@ -7,6 +7,7 @@ import communityTabCss from './css/community-tab-css';
 import sendGameCss from './css/send-game-css';
 import mainTabCss from './css/main-tab-css';
 import globalTabCss from './css/global-tab-css';
+import gameQuestionMainCss from './css/game-question-main-css';
 
 
 export default function getCss(page) {
@@ -29,6 +30,8 @@ export default function getCss(page) {
 			return globalTabCss();
 		case 'community-tab':
 			return communityTabCss();
+		case 'game-question-main':
+			return gameQuestionMainCss();
 		default:
 			return {
 				body: {

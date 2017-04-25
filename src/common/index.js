@@ -7,13 +7,32 @@ import Config from '../common/config';
 
 export async function isLogin() {
 	var session = await AsyncStorage.getItem("session_ticket");
-	if (session != null)
+	var user = await AsyncStorage.getItem("user");
+	if (session !== undefined && user !== undefined)
 		return true;
 	return false;
 }
 
 export async function setSessionTicket(ticket) {
 	AsyncStorage.setItem("session_ticket", ticket);
+}
+
+export async function setUser(user) {
+	GLOBALS.user = {
+		name: user.name
+	};
+	return await AsyncStorage.setItem("user", JSON.stringify(user));
+}
+
+export async function getUser() {
+	var user = await AsyncStorage.getItem("user");
+	if (user === undefined)
+		return user;
+	user = JSON.parse(user);
+	GLOBALS.user = {
+		name: user.name
+	};
+	return user;
 }
 
 export function deleteSessionTicket(){

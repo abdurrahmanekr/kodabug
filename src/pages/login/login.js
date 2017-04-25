@@ -12,10 +12,13 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
+
 import {
 	setSessionTicket,
+	setUser,
 	handleErrorAlert
 } from '../../common/index';
+
 import {
 	UserService
 } from '../../services/'
@@ -35,6 +38,7 @@ export default class Login extends Component {
 			name: this.state.userName,
 			pass: this.state.userPassword
 		};
+		setUser(user);
 		if (user.name !== '' && user.pass !== '') {
 			UserService.loginUser("loginUser", user.name, user.pass).then(res => {
 				let user = res.result;

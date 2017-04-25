@@ -41,25 +41,24 @@ export default class MainTab extends Component {
 				}
 			],
 			points: {
-					hepo: "",
-					bugpo: "",
-					fipo: "",
-					keypo: "",
+				hepo: "",
+				bugpo: "",
+				fipo: "",
+				keypo: "",
 			}
 		}
-		this.getUserVCard();
+		this.loadUserData();
 	}
 
-	async getUserVCard(){
-		getSessionTicket().then(sessionTicket => {
-			UserService.getUserVCard("getUserVCard", "vay@samet.com", sessionTicket).then(res => {
-				this.setState({
-					hepo: res.result.hepo,
-					bugpo: res.result.bugpo,
-					fipo: res.result.fipo,
-					keypo: res.result.keypo
-				})
-			});
+	async loadUserData() {
+		var self = this;
+		UserService.loadUserData.bind(this)().then((user) => {
+			self.setState({
+				hepo: user.hepo,
+				bugpo: user.bugpo,
+				fipo: user.fipo,
+				keypo: user.keypo
+			})
 		});
 	}
 

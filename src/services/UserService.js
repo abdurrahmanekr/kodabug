@@ -9,10 +9,32 @@ import {
 	getUserVCard
 } from '../providers/WebService';
 
+import {
+	getUser
+} from '../common/index';
+
 class UserService extends EventEmitter {
 
 	constructor(props) {
 		super(props)
+	}
+
+	/*
+	 * Kullanıcının gerekli olan bilgilerini getirir
+	 * bu method'a this bind edilmelidir
+	*/
+	loadUserData() {
+		var self = this;
+		return new Promise((resolve, reject) => {
+			getUser().then(user => {
+				if (user !== undefined)
+					getUserVCard("getUserVCard", GLOBALS.user.name).then(res => {
+						resolve(res.result);
+					});
+				else
+					reject();
+			})
+		})
 	}
 
 	/*
