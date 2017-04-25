@@ -8,6 +8,9 @@ import sendGameCss from './css/send-game-css';
 import mainTabCss from './css/main-tab-css';
 import globalTabCss from './css/global-tab-css';
 import gameQuestionMainCss from './css/game-question-main-css';
+import gameQuestionLoseCss from './css/game-question-lose-css';
+import gameQuestionWinCss from './css/game-question-win-css';
+import gameQuestionGameoverCss from './css/game-question-gameover-css';
 
 
 export default function getCss(page) {
@@ -32,6 +35,12 @@ export default function getCss(page) {
 			return communityTabCss();
 		case 'game-question-main':
 			return gameQuestionMainCss();
+		case 'game-question-lose':
+			return gameQuestionLoseCss();
+		case 'game-question-win':
+			return gameQuestionWinCss();
+		case 'game-question-gameover':
+			return gameQuestionGameoverCss();
 		default:
 			return {
 				body: {
