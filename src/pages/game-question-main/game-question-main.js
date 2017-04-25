@@ -15,12 +15,13 @@ export default class GameQuestionMain extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			question_name: '',
+			question_name: 'İşlem sonunda a değişkenin değeri nedir ?',
+			question_extension: 'var a = null;\nif (a = false)\n\t\ta=true;',
 			answers: [
-				{id: 0, name: 'cevap1', value: '1'},
-				{id: 1, name: 'cevap2', value: '1'},
-				{id: 2, name: 'cevap3', value: '1'},
-				{id: 3, name: 'cevap4', value: '1'},
+				{id: 0, value: 'true'},
+				{id: 1, value: 'false'},
+				{id: 2, value: 'null'},
+				{id: 3, value: 'hata verir'},
 			],
 			question_type: "1",
 			correctAnswerId: ""
@@ -30,23 +31,33 @@ export default class GameQuestionMain extends Component {
 	render() {
 		return (
 			<View style={style.body}>
-				<Text>
+				<Text
+					style={style.question_name}>
 					{this.state.question_name}
 				</Text>
 				{
+					this.state.question_extension !== undefined ? <Text
+						style={style.question_extension}>
+						{this.state.question_extension}
+					</Text>: null
+				}
+				<View
+					style={style.answers}>
+				{
 					this.state.answers.map((answer, key) => {
 						return(
-							<View style={style.answers} key={key}>
-								<TouchableOpacity
-									onPress={() => this.setState({correctAnswerId: key})}>
-									<Text>
-										{answer.value}
-									</Text>
-								</TouchableOpacity>
-							</View>
+							<TouchableOpacity
+								style={style.answer}
+								key={key}
+								onPress={() => this.setState({correctAnswerId: key})}>
+								<Text>
+									{answer.value}
+								</Text>
+							</TouchableOpacity>
 						)
 					})
 				}
+				</View>
 			</View>
 		);
 	}

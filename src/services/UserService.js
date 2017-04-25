@@ -59,7 +59,7 @@ class UserService extends EventEmitter {
 	 * @usid: kullanıcı adı veya maili
 	 * @session_ticket: kullanıcının session_ticket bilgisi
 	*/
-	async getUserVCard(method, usid, session_ticket){
+	async getUserVCard(method, usid, session_ticket) {
 		return getUserVCard(method, usid, session_ticket).then(res => {
 			return res;
 		});
