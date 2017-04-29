@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
-import {isLogin} from '../../common/'
+import {isLogin, deleteSessionTicket} from '../../common/'
 export default class Start extends Component {
 
 	constructor(props) {
@@ -17,9 +17,9 @@ export default class Start extends Component {
 	async isLogin() {
 		var present = this;
 		isLogin().then((res) => {
-			if(res)
+			if(res){
 				Actions.Main({type: 'reset'});
-			else
+			}else
 				Actions.Login({type: 'reset'});
 		});
 	}

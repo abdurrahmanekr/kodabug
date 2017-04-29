@@ -85,6 +85,51 @@ export default function mainTabCss() {
 		gameListDate: {
 			flex: 1,
 			justifyContent: 'flex-end'
+		},
+		gameListStatus:{
+			flex: 1,
+			flexDirection: 'column',
+			alignItems: 'flex-end',
+		},
+		gameListScores:{
+			flex: 1,
+			flexDirection: 'row',
+			alignItems: 'center',
+			marginRight: 10,
+			marginTop: 5
+		},
+		gameListScoresText:{
+			borderRadius: 5,
+			paddingLeft: 10,
+			paddingRight: 10,
+			paddingTop: 5,
+			paddingBottom: 5,
+			marginLeft: 3,
+			backgroundColor: '#888'
+		},
+		gameListQueue: {
+			flex: 1,
+			justifyContent: 'flex-end',
+			alignItems: 'flex-end',
+			marginBottom: 10,
+			marginRight: 10,
+		},
+		gameListQueueText: {
+			fontSize: 15,
+			borderRadius: 5,
+			color: '#fff',
+			fontWeight: '500',
+			paddingLeft: 10,
+			paddingRight: 10,
+			paddingBottom: 5,
+			paddingTop: 5,
+		},
+		gameListQueueRival:{
+			backgroundColor: "#e74c3c",
+		},
+		gameListQueueSelf: {
+			backgroundColor: "#2ecc71",
 		}
+
 	}
 }

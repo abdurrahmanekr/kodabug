@@ -25,19 +25,22 @@ export default class MainTab extends Component {
 					name: "avarekodcu",
 					rank: "debugger",
 					avatarUri: 'https://cdn0.iconfinder.com/data/icons/avatars-7/128/16-512.png',
-					date: 'Bugün 01:20'
+					date: 'Bugün 01:20',
+					queue: 'self'
 				},
 				{
 					name: "kipcakbegi",
 					rank: "bugger",
 					avatarUri: 'https://addmehits.com/up/profilresimleri/25f8915538b54dd39f520236c29f82.png',
-					date: 'Bugün 01:20'
+					date: 'Bugün 01:20',
+					queue: 'rival'
 				},
 				{
 					name: "adaminbiri",
 					rank: "logger",
 					avatarUri: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png',
-					date: 'Bugün 01:20'
+					date: 'Bugün 01:20',
+					queue: 'rival'
 				}
 			],
 			points: {
@@ -50,14 +53,18 @@ export default class MainTab extends Component {
 		this.loadUserData();
 	}
 
+	async
+
 	async loadUserData() {
 		var self = this;
 		UserService.loadUserData.bind(this)().then((user) => {
 			self.setState({
-				hepo: user.hepo,
-				bugpo: user.bugpo,
-				fipo: user.fipo,
-				keypo: user.keypo
+				points: {
+					hepo: user.hepo,
+					bugpo: user.bugpo,
+					fipo: user.fipo,
+					keypo: user.keypo
+				}
 			})
 		});
 	}
@@ -104,6 +111,21 @@ export default class MainTab extends Component {
 											<Text style={style.gameListName}>{game.name}</Text>
 											<Text style={style.gameListRank}>{game.rank}</Text>
 											<Text style={style.gameListDate}>{game.date}</Text>
+										</View>
+										<View style={style.gameListStatus}>
+											<View style={style.gameListScores}>
+												<View style={style.gameListScoresText}>
+													<Text style={{color: '#fff'}}>1</Text>
+												</View>
+												<View style={style.gameListScoresText}>
+													<Text style={{color: '#fff'}}>1</Text>
+												</View>
+											</View>
+											<View style={style.gameListQueue}>
+												<Text style={[game.queue == "rival" ? style.gameListQueueRival : style.gameListQueueSelf, style.gameListQueueText]}>
+													{game.queue == "rival" ? "Sıra onda" : "Sıra sende!"}
+												</Text>
+											</View>
 										</View>
 									</View>
 								)

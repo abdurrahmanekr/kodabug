@@ -57,3 +57,16 @@ export async function getUserVCard(){
 		return 'connection_error'
 	});
 }
+
+export async function getGameList(){
+	let data = argumentsToData('getGameList', arguments);
+	let url = encodeServiceData('GameService', data);
+	return fetch(url)
+	.then(res => res.json())
+	.then(res => {
+		return res;
+	})
+	.catch(res => {
+		return 'connection_error';
+	})
+}

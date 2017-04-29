@@ -28,7 +28,7 @@ class UserService extends EventEmitter {
 		return new Promise((resolve, reject) => {
 			getUser().then(user => {
 				if (user !== undefined)
-					getUserVCard("getUserVCard", GLOBALS.user.name).then(res => {
+					getUserVCard("getUserVCard", GLOBALS.user_name).then(res => {
 						resolve(res.result);
 					});
 				else

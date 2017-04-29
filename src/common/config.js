@@ -27,6 +27,10 @@ var _Config = {
 			"method": "",
 			"usid": "",
 			"session_ticket": ""
+		},
+		getGameList : {
+			"method": "",
+			"session_ticket": ""
 		}
 	},
 	init: function(x){
