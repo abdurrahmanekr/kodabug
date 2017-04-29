@@ -59,12 +59,10 @@ export default class MainTab extends Component {
 		var self = this;
 		UserService.loadUserData.bind(this)().then((user) => {
 			self.setState({
-				points: {
-					hepo: user.hepo,
-					bugpo: user.bugpo,
-					fipo: user.fipo,
-					keypo: user.keypo
-				}
+				hepo: user.hepo,
+				bugpo: user.bugpo,
+				fipo: user.fipo,
+				keypo: user.keypo
 			})
 		});
 	}
