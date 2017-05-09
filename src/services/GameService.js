@@ -6,6 +6,10 @@ import {
 
 import {getGameList} from '../providers/WebService';
 
+import {
+	getSessionTicket
+} from '../common/index';
+
 class GameService extends EventEmitter {
 	constructor(props) {
 	  super(props);

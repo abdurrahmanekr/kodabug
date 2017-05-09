@@ -9,7 +9,7 @@ import {
 	Alert
 } from 'react-native';
 
-import {UserService} from '../../../../services';
+import {UserService, GameService} from '../../../../services';
 import {getSessionTicket} from '../../../../common';
 
 import Ionicon from 'react-native-vector-icons/Ionicons'; // icon kütüphanesi
@@ -20,29 +20,7 @@ export default class MainTab extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			games: [
-				{
-					name: "avarekodcu",
-					rank: "debugger",
-					avatarUri: 'https://cdn0.iconfinder.com/data/icons/avatars-7/128/16-512.png',
-					date: 'Bugün 01:20',
-					queue: 'self'
-				},
-				{
-					name: "kipcakbegi",
-					rank: "bugger",
-					avatarUri: 'https://addmehits.com/up/profilresimleri/25f8915538b54dd39f520236c29f82.png',
-					date: 'Bugün 01:20',
-					queue: 'rival'
-				},
-				{
-					name: "adaminbiri",
-					rank: "logger",
-					avatarUri: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png',
-					date: 'Bugün 01:20',
-					queue: 'rival'
-				}
-			],
+			games: [],
 			points: {
 				hepo: "",
 				bugpo: "",
@@ -51,9 +29,25 @@ export default class MainTab extends Component {
 			}
 		}
 		this.loadUserData();
-	}
 
-	async
+		getSessionTicket().then(sessionTicket => {
+			GameService.getGameList("getGameList", sessionTicket).then(games => {
+				games.result.map((game, key) => {
+					UserService.getUserVCard("getUserVCard", game.grivalid, sessionTicket).then(user => {
+						this.state.games.push({
+							name: user.result.usname,
+							rank: "rank",
+							date: '05-05-05',
+							avatarUri: user.result.photo,
+							uspoint: game.uspoint,
+							rivalpoint: game.rivalpoint
+						});
+						this.setState({games: this.state.games});
+					});
+				})
+			})
+		})
+	}
 
 	async loadUserData() {
 		var self = this;
@@ -104,7 +98,7 @@ export default class MainTab extends Component {
 							this.state.games.map((game, key) => {
 								return(
 									<View key={key} style={style.gameListGame}>
-										<Image source={{uri: game.avatarUri}} style={style.gameListAvatar} />
+										<Image source={game.avatarUri ? {uri: game.avatarUri } : {uri: 'https://cdn3.iconfinder.com/data/icons/pictofoundry-pro-vector-set/512/Avatar-512.png'}} style={style.gameListAvatar} />
 										<View style={style.gameListContent}>
 											<Text style={style.gameListName}>{game.name}</Text>
 											<Text style={style.gameListRank}>{game.rank}</Text>
@@ -113,10 +107,10 @@ export default class MainTab extends Component {
 										<View style={style.gameListStatus}>
 											<View style={style.gameListScores}>
 												<View style={style.gameListScoresText}>
-													<Text style={{color: '#fff'}}>1</Text>
+													<Text style={{color: '#fff'}}>{game.uspoint}</Text>
 												</View>
 												<View style={style.gameListScoresText}>
-													<Text style={{color: '#fff'}}>1</Text>
+													<Text style={{color: '#fff'}}>{game.rivalpoint}</Text>
 												</View>
 											</View>
 											<View style={style.gameListQueue}>

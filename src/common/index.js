@@ -8,7 +8,7 @@ import Config from '../common/config';
 export async function isLogin() {
 	var session = await AsyncStorage.getItem("session_ticket");
 	var user = await AsyncStorage.getItem("user");
-	if (session !== undefined && user !== undefined)
+	if (session != undefined && user != undefined)
 		return true;
 	return false;
 }

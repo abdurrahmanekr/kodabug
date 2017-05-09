@@ -1,5 +1,5 @@
 var _Config = {
-	WS_URL: "http://192.168.1.41/kodabug/service",
+	WS_URL: "http://178.62.101.216:1122/service",
 	datas: {
 		uploadGame: {
 			method: "",
