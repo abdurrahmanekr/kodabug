@@ -38,7 +38,7 @@ export default function loginCss() {
 			color: '#fff'
 		},
 		try_text: {
-			fontFamily: 'monospace',
+			fontFamily: 'UbuntuMono-Regular',
 			color: '#666',
 			marginBottom: 5,
 		},
@@ -47,13 +47,13 @@ export default function loginCss() {
 			flexDirection: 'row',
 		},
 		catch_text: {
-			fontFamily: 'monospace',
+			fontFamily: 'UbuntuMono-Regular',
 			color: '#387ef5',
 			marginLeft: 10,
 			marginRight: 10
 		},
 		signup_text: {
-			fontFamily: 'monospace',
+			fontFamily: 'UbuntuMono-Regular',
 			color: '#387ef5',
 			marginLeft: 5,
 			marginRight: 5

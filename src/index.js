@@ -76,7 +76,7 @@ export default class kodabug extends Component {
 
 const customTextProps = {
   style: {
-	fontFamily: 'OpenSans-Regular'
+	fontFamily: 'SourceSansPro-Regular'
   }
 }
 setCustomText(customTextProps);

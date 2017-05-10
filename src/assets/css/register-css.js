@@ -18,7 +18,7 @@ export default function registerCss() {
 			height: 100
 		},
 		logo_text: {
-			fontFamily: 'monospace',
+			fontFamily: 'UbuntuMono-Regular',
 		},
 		input: {
 			borderWidth: 1,
@@ -49,7 +49,7 @@ export default function registerCss() {
 			alignItems: "center"
 		},
 		helpdesk_text: {
-			fontFamily: 'monospace',
+			fontFamily: 'UbuntuMono-Regular',
 			color: '#387ef5',
 			marginLeft: 5,
 			marginRight: 5

@@ -21,8 +21,7 @@ export default function gameQuestionMainCss() {
 		},
 		question_extension: {
 			margin: 15,
-			marginTop: 0,
-			fontFamily: 'monospace'
+			marginTop: 0
 		}
 	}
 }

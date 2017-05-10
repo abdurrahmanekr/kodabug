@@ -11,7 +11,7 @@
     "react-native": "0.42.0",
     "react-native-elements": "^0.10.3",
     "react-native-global-props": "^1.1.1",
-    "react-native-router-flux": "^3.38.0",
+    "react-native-router-flux": "3.38.0",
     "react-native-scrollable-tab-view": "^0.6.3",
     "react-native-vector-icons": "^4.0.0"
   },
@@ -23,5 +23,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+	"assets": ["./src/assets/fonts"]
   }
 }
