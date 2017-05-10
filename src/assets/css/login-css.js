@@ -31,7 +31,8 @@ module.exports = StyleSheet.create({
 		padding: 5,
 		paddingLeft: 20,
 		borderRadius: 5,
-		marginBottom: 15
+		marginBottom: 15,
+		minHeight: 40
 	},
 	login_button: {
 		padding: 15,
