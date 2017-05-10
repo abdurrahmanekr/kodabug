@@ -19,14 +19,17 @@ module.exports = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	iconText: {
-		fontSize: 12,
+	iconTextContainer: {
 		marginLeft: 5,
 		paddingTop: 2.5,
 		paddingBottom: 2.5,
 		paddingLeft: 7.5,
 		paddingRight: 7.5,
 		borderRadius: 10,
+	},
+	iconText: {
+		fontSize: 12,
+		backgroundColor: 'transparent',
 		color: "#fff"
 	},
 	startGameArea: {
