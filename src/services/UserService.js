@@ -7,11 +7,11 @@ import {
 import {
 	loginUser,
 	getUserVCard
-} from '../providers/WebService';
+} from '@kodabug/providers/web-service';
 
 import {
 	getUser
-} from '../common/index';
+} from '@kodabug/common';
 
 class UserService extends EventEmitter {
 

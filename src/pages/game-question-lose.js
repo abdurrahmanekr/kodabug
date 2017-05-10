@@ -7,6 +7,8 @@ import {
 	StatusBar
 } from 'react-native';
 
+import style from '@kodabug/style/game-question-lose';
+
 export default class GameQuestionLose extends Component {
 	constructor(props) {
 		super(props);
@@ -42,6 +44,3 @@ export default class GameQuestionLose extends Component {
 		);
 	}
 }
-
-import getCss from '../../assets/style';
-const style = StyleSheet.create(getCss('game-question-lose'));

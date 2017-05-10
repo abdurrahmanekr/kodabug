@@ -6,7 +6,11 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
-import {isLogin, deleteSessionTicket} from '../../common/'
+
+import {isLogin, deleteSessionTicket} from '@kodabug/common';
+
+import style from '@kodabug/style/start';
+
 export default class Start extends Component {
 
 	constructor(props) {
@@ -33,6 +37,3 @@ export default class Start extends Component {
 		);
 	}
 }
-
-import getCss from '../../assets/style';
-const style = StyleSheet.create(getCss('start'));

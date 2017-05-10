@@ -4,11 +4,11 @@ import {
 	Alert
 } from 'react-native';
 
-import {getGameList} from '../providers/WebService';
+import {getGameList} from '@kodabug/providers/web-service';
 
 import {
 	getSessionTicket
-} from '../common/index';
+} from '@kodabug/common';
 
 class GameService extends EventEmitter {
 	constructor(props) {

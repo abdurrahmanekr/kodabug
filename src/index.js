@@ -11,16 +11,21 @@ import {
 
 import {Actions, Scene, Router} from 'react-native-router-flux';
 
-import Start from './pages/start/start';
-import Login from './pages/login/login';
-import Main from './pages/main/main';
-import Register from './pages/register/register';
-import SendGame from './pages/main/tabs/contributions-tab/send-game';
-import {setCustomText} from 'react-native-global-props';
+import {
+	Start,
+	Login,
+	Main,
+	Register,
+	GameQuestionMain,
+	GameQuestionLose,
+	GameQuestionWin
+} from '@kodabug/pages';
 
-import GameQuestionMain from './pages/game-question-main/game-question-main'
-import GameQuestionLose from './pages/game-question-lose/game-question-lose'
-import GameQuestionWin from './pages/game-question-win/game-question-win'
+import {
+	SendGame
+} from '@kodabug/tabs';
+
+import {setCustomText} from 'react-native-global-props';
 
 export default class kodabug extends Component {
 	render() {

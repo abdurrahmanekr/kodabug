@@ -9,12 +9,17 @@ import {
 	Alert
 } from 'react-native';
 
-import {UserService, GameService} from '../../../../services';
-import {getSessionTicket} from '../../../../common';
+import {UserService, GameService} from '@kodabug/services';
+
+import {
+	getSessionTicket
+} from '@kodabug/common';
 
 import Ionicon from 'react-native-vector-icons/Ionicons'; // icon kütüphanesi
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicon from 'react-native-vector-icons/Octicons';
+
+import style from '@kodabug/style/main-tab';
 
 export default class MainTab extends Component {
 	constructor(props) {
@@ -88,7 +93,7 @@ export default class MainTab extends Component {
 					<View style={style.startGameArea}>
 						<Text style={style.startGameAreaTitle}>Oynamak için tıkla</Text>
 						<Image
-							source={require('../../../../assets/images/kodabug.png')}
+							source={require('@kodabug/images').kodabugPNG}
 							style={style.startGameAreaImage} />
 					</View>
 
@@ -129,6 +134,3 @@ export default class MainTab extends Component {
 		);
 	}
 }
-
-import getCss from '../../../../assets/style';
-const style = StyleSheet.create(getCss('main-tab'));

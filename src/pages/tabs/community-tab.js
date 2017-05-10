@@ -18,6 +18,8 @@ import {
 
 import {Actions} from 'react-native-router-flux';
 
+import style from '@kodabug/style/community-tab';
+
 export default class CommunityTab extends Component {
 	constructor(props) {
 		super(props);
@@ -104,7 +106,7 @@ export default class CommunityTab extends Component {
 											<ListItem
 										        key={i}
 										        roundAvatar
-										        avatar={item.photo ? {uri: item.photo}: require('../../../../assets/images/user.png')}
+										        avatar={item.photo ? {uri: item.photo}: require('@kodabug/images').kodabugPNG}
 										        title={item.name}
 										        hideChevron={true}
 										        subtitle={item.rankName}
@@ -126,7 +128,7 @@ export default class CommunityTab extends Component {
 											<ListItem
 										        key={i}
 										        roundAvatar
-										        avatar={item.photo ? {uri: item.photo}: require('../../../../assets/images/user.png')}
+										        avatar={item.photo ? {uri: item.photo}: require('@kodabug/images').kodabugPNG}
 										        title={item.name}
 										        hideChevron={true}
 										        subtitle={item.rankName}
@@ -149,7 +151,7 @@ export default class CommunityTab extends Component {
 											<ListItem
 										        key={i}
 										        roundAvatar
-										        avatar={item.photo ? {uri: item.photo}: require('../../../../assets/images/user.png')}
+										        avatar={item.photo ? {uri: item.photo}: require('@kodabug/images').kodabugPNG}
 										        title={item.title}
 										        hideChevron={true}
 										        rightTitle={item.date ? item.date.toDateString(): ' '}
@@ -167,6 +169,3 @@ export default class CommunityTab extends Component {
 		);
 	}
 }
-
-import getCss from '../../../../assets/style';
-const style = StyleSheet.create(getCss('community-tab'));

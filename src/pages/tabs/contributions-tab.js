@@ -13,6 +13,8 @@ import {
 
 import {Actions} from 'react-native-router-flux';
 
+import style from '@kodabug/style/contributions';
+
 export default class ContributionsTab extends Component {
 	constructor(props) {
 		super(props);
@@ -32,6 +34,3 @@ export default class ContributionsTab extends Component {
 		);
 	}
 }
-
-import getCss from '../../../../assets/style';
-const style = StyleSheet.create(getCss('contributions'));

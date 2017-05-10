@@ -7,9 +7,9 @@ import {
 import {
 	registerUser,
 	uploadGame
-} from '../providers/WebService';
+} from '@kodabug/providers/web-service';
 
-import {getArgs} from '../common/index';
+import {getArgs} from '@kodabug/common';
 
 class RegisterService extends EventEmitter {
 

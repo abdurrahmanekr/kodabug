@@ -1,10 +1,14 @@
+/*
+ * @providesModule @kodabug/providers/web-service
+ */
+
 import {
 	encodeServiceData,
 	getArgs,
 	argumentsToData
-} from '../common/index'
+} from '@kodabug/common'
 
-import Config from '../common/config';
+import Config from '@kodabug/config';
 
 export async function loginUser() {
 	let data = argumentsToData('loginUser', arguments);

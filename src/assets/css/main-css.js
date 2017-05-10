@@ -1,7 +1,11 @@
-export default function mainCss() {
-	return {
-		body: {
-			flex: 1,
-		}
+/*
+ * @providesModule @kodabug/style/main
+ */
+
+import {StyleSheet} from 'react-native';
+
+module.exports = StyleSheet.create({
+	body: {
+		flex: 1,
 	}
-}
+});

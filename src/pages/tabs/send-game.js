@@ -11,8 +11,10 @@ import {
 	TouchableOpacity
 } from 'react-native';
 
-import { RegisterService } from '../../../../services/';
-import { getSessionTicket } from '../../../../common/index';
+import { RegisterService } from '@kodabug/services';
+import { getSessionTicket } from '@kodabug/common';
+
+import style from '@kodabug/style/send-game';
 
 export default class SendGame extends Component {
 	constructor(props) {
@@ -95,6 +97,3 @@ export default class SendGame extends Component {
 		);
 	}
 }
-
-import getCss from '../../../../assets/style';
-const style = StyleSheet.create(getCss('send-game'));

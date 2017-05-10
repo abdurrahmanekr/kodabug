@@ -16,12 +16,14 @@ import {Actions} from 'react-native-router-flux';
 
 import {
 	RegisterService
-} from '../../services/'
+} from '@kodabug/services'
 
 import {
 	handleErrorAlert,
 	setSessionTicket
-} from '../../common/';
+} from '@kodabug/common';
+
+import style from '@kodabug/style/register';
 
 export default class Register extends Component{
 	constructor(props){
@@ -75,7 +77,7 @@ export default class Register extends Component{
 					<View
 						style={style.top_view}>
 						<Image
-							source={require('../../assets/images/kodabug.png')}
+							source={require('@kodabug/images').kodabugPNG}
 							style={style.logo}/>
 						<Text
 							style={style.logo_text}>
@@ -141,6 +143,3 @@ export default class Register extends Component{
 		)
 	}
 }
-
-import getCss from '../../assets/style';
-const style = StyleSheet.create(getCss('register'));

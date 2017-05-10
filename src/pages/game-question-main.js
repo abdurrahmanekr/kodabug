@@ -11,6 +11,8 @@ import {
 	TouchableOpacity
 } from 'react-native';
 
+import style from '@kodabug/style/game-question-main';
+
 export default class GameQuestionMain extends Component {
 	constructor(props) {
 		super(props);
@@ -62,6 +64,3 @@ export default class GameQuestionMain extends Component {
 		);
 	}
 }
-
-import getCss from '../../assets/style';
-const style = StyleSheet.create(getCss('game-question-main'));

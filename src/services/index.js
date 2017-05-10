@@ -1,3 +1,7 @@
+/*
+ * @providesModule @kodabug/services
+ */
+
 import UserService from './UserService';
 import RegisterService from './RegisterService';
 import GameService from './GameService';

@@ -17,11 +17,13 @@ import {
 	setSessionTicket,
 	setUser,
 	handleErrorAlert
-} from '../../common/index';
+} from '@kodabug/common';
 
 import {
 	UserService
-} from '../../services/'
+} from '@kodabug/services'
+
+import style from '@kodabug/style/login';
 
 export default class Login extends Component {
 
@@ -64,7 +66,7 @@ export default class Login extends Component {
 					<View
 						style={style.logo_container}>
 						<Image
-							source={require('../../assets/images/kodabug.png')}
+							source={require('@kodabug/images').kodabugPNG}
 							style={style.logo}/>
 					</View>
 
@@ -125,6 +127,3 @@ export default class Login extends Component {
 		);
 	}
 }
-
-import getCss from '../../assets/style';
-const style = StyleSheet.create(getCss('login'));

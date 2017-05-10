@@ -13,6 +13,8 @@ import Ionicon from 'react-native-vector-icons/Ionicons'; // icon kütüphanesi
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicon from 'react-native-vector-icons/Octicons';
 
+import style from '@kodabug/style/global-tab';
+
 export default class GlobalTab extends Component {
 
 	constructor(props) {
@@ -95,6 +97,3 @@ export default class GlobalTab extends Component {
 		);
 	}
 }
-
-import getCss from '../../../../assets/style';
-const style = StyleSheet.create(getCss('global-tab'));

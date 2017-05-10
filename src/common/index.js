@@ -1,9 +1,13 @@
+/*
+ * @providesModule @kodabug/common
+ */
+
 import {
 	AsyncStorage,
 	Alert
 } from 'react-native';
 
-import Config from '../common/config';
+import Config from '@kodabug/config';
 
 export async function isLogin() {
 	var session = await AsyncStorage.getItem("session_ticket");
