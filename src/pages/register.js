@@ -20,7 +20,8 @@ import {
 
 import {
 	handleErrorAlert,
-	setSessionTicket
+	setSessionTicket,
+	setUser
 } from '@kodabug/common';
 
 import style from '@kodabug/style/register';
@@ -59,6 +60,11 @@ export default class Register extends Component{
 				else {
 					Alert.alert("Kayıt başarılı!");
 					setSessionTicket(String(res.result.session_ticket));
+					setUser({
+						usid: this.state.usmail,
+						usname: this.state.usname,
+						surname: this.state.surname,
+					});
 					Actions.Main({type: 'reset'});
 				}
 			}, err => {

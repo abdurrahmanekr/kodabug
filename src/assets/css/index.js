@@ -11,6 +11,7 @@ import gameQuestionMainCss from './game-question-main-css';
 import gameQuestionLoseCss from './game-question-lose-css';
 import gameQuestionWinCss from './game-question-win-css';
 import gameQuestionGameoverCss from './game-question-gameover-css';
+import settingsCss from './settings-css';
 
 export {
 	startCss,
@@ -25,5 +26,6 @@ export {
 	gameQuestionMainCss,
 	gameQuestionLoseCss,
 	gameQuestionWinCss,
-	gameQuestionGameoverCss
+	gameQuestionGameoverCss,
+	settingsCss
 }

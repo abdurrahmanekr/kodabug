@@ -77,5 +77,9 @@ module.exports = StyleSheet.create({
 	task_item_header: {
 		fontSize: 20,
 		color: '#444'
+	},
+	setting_button: {
+		alignSelf: 'flex-end',
+		margin: 10
 	}
 });

@@ -18,7 +18,8 @@ import {
 	Register,
 	GameQuestionMain,
 	GameQuestionLose,
-	GameQuestionWin
+	GameQuestionWin,
+	Settings
 } from '@kodabug/pages';
 
 import {
@@ -39,13 +40,17 @@ export default class kodabug extends Component {
 				<Scene key="GameQuestionMain" component={GameQuestionMain}/>
 				<Scene key="GameQuestionLose" component={GameQuestionLose} hideNavBar={true}/>
 				<Scene key="GameQuestionWin" component={GameQuestionWin} hideNavBar={true}/>
+				<Scene key="Settings" hideNavBar={false} direction='vertical'>
+					<Scene key="SettingsMain" component={Settings} title="Ayarlar" />
+				</Scene>
 			</Scene>
 		);
 
 		const style = StyleSheet.create({
 			navBar: {
 				backgroundColor: '#ff843c',
-				borderBottomWidth: 0
+				borderBottomWidth: 0,
+				height: 50
 			},
 			navTitle: {
 				color: '#fff'

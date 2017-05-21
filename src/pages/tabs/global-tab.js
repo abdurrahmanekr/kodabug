@@ -6,12 +6,13 @@ import {
 	Image,
 	List,
 	ScrollView,
-	Alert
+	Alert,
+	TouchableOpacity
 } from 'react-native';
 
+import { Actions } from 'react-native-router-flux';
+
 import Ionicon from 'react-native-vector-icons/Ionicons'; // icon kütüphanesi
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Octicon from 'react-native-vector-icons/Octicons';
 
 import style from '@kodabug/style/global-tab';
 
@@ -55,6 +56,16 @@ export default class GlobalTab extends Component {
 								uri: 'http://www.brautbox.de/local/albums/article1024/hochzeit-in-der-tuerkei_hpv.jpg'
 							}}
 							style={style.background_image}/>
+						<TouchableOpacity
+							onPress={() => {
+								Actions.Settings();
+							}}>
+							<Ionicon
+								name="ios-settings"
+								size={40}
+								style={style.setting_button}
+								color="#ccc"/>
+						</TouchableOpacity>
 					</View>
 					<View
 						style={style.profile_card}>

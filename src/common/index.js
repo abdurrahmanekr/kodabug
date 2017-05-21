@@ -17,6 +17,12 @@ export async function isLogin() {
 	return false;
 }
 
+export async function logOut() {
+	await AsyncStorage.removeItem("session_ticket");
+	await AsyncStorage.removeItem("user");
+	return true;
+}
+
 export async function setSessionTicket(ticket) {
 	AsyncStorage.setItem("session_ticket", ticket);
 }
