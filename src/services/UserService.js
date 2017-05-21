@@ -10,7 +10,8 @@ import {
 } from '@kodabug/providers/web-service';
 
 import {
-	getUser
+	getUser,
+	setUser
 } from '@kodabug/common';
 
 class UserService extends EventEmitter {
@@ -28,8 +29,11 @@ class UserService extends EventEmitter {
 		return new Promise((resolve, reject) => {
 			getUser().then(user => {
 				if (user !== undefined)
-					getUserVCard("getUserVCard", GLOBALS.user.name).then(res => {
+					getUserVCard("getUserVCard", GLOBALS.user.usid).then(res => {
+						if (res.result != -1)
+							setUser(res.result);
 						resolve(res.result);
+						GLOBALS.promise.view.emit('refreshUser');
 					});
 				else
 					reject();

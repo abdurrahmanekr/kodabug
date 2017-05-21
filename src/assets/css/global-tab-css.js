@@ -29,11 +29,8 @@ module.exports = StyleSheet.create({
 		height: 100
 	},
 	profile_image: {
-		position: 'absolute',
-		right: 0,
-		left: 0,
-		top: 0,
-		bottom: 0
+		width: 100,
+		height: 100
 	},
 	profile_right_container: {
 		flex: 1,

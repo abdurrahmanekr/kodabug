@@ -26,12 +26,7 @@ export default class MainTab extends Component {
 		super(props);
 		this.state = {
 			games: [],
-			points: {
-				hepo: "",
-				bugpo: "",
-				fipo: "",
-				keypo: "",
-			}
+			user: { }
 		}
 		this.loadUserData();
 
@@ -58,12 +53,9 @@ export default class MainTab extends Component {
 	async loadUserData() {
 		var self = this;
 		UserService.loadUserData.bind(this)().then((user) => {
-			if (user instanceof Object)
+			if (user instanceof Object && GLOBALS.user !== undefined)
 				self.setState({
-					hepo: user.hepo,
-					bugpo: user.bugpo,
-					fipo: user.fipo,
-					keypo: user.keypo
+					user: GLOBALS.user
 				})
 		});
 	}
@@ -83,7 +75,7 @@ export default class MainTab extends Component {
 						<View
 							style={[style.iconTextContainer, {backgroundColor: "#ff0000"}]}>
 							<Text
-								style={style.iconText}>{this.state.hepo}</Text>
+								style={style.iconText}>{this.state.user.hepo}</Text>
 						</View>
 					</View>
 					<View
@@ -95,7 +87,7 @@ export default class MainTab extends Component {
 						<View
 							style={[style.iconTextContainer, {backgroundColor: '#ffab2e'}]}>
 							<Text
-								style={style.iconText}>{this.state.bugpo}</Text>
+								style={style.iconText}>{this.state.user.bugpo}</Text>
 						</View>
 					</View>
 					<View
@@ -107,7 +99,7 @@ export default class MainTab extends Component {
 						<View
 							style={[style.iconTextContainer, {backgroundColor: '#cd4eff'}]}>
 							<Text
-								style={style.iconText}>{this.state.fipo}</Text>
+								style={style.iconText}>{this.state.user.fipo}</Text>
 						</View>
 					</View>
 					<View
@@ -119,7 +111,7 @@ export default class MainTab extends Component {
 						<View
 							style={[style.iconTextContainer, {backgroundColor: '#2eff99'}]}>
 							<Text
-								style={style.iconText}>{this.state.keypo}</Text>
+								style={style.iconText}>{this.state.user.keypo}</Text>
 						</View>
 					</View>
 

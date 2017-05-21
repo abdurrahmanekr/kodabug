@@ -21,13 +21,27 @@ export default class GlobalTab extends Component {
 		super(props);
 
 		this.state = {
-			user: {
-				usid: '1',
-				usname: 'Diktatör Kodcu',
-				uspoint: 100,
-				photo: 'https://avatars0.githubusercontent.com/u/15075759'
-			}
+			user: {}
 		};
+	}
+
+	async loadUser() {
+		if (GLOBALS.user !== undefined)
+			this.setState({
+				user: GLOBALS.user
+			})
+	}
+
+	componentWillMount() {
+		var self = this;
+		this.loadUser();
+		GLOBALS.promise.view.on('refreshUser', () => {
+			self.loadUser.bind(this);
+		})
+	}
+
+	componentWillUnmount() {
+		GLOBALS.promise.view.off('refreshUser');
 	}
 
 	render() {
@@ -47,17 +61,17 @@ export default class GlobalTab extends Component {
 						<View
 							style={style.profile_image_container}>
 							<Image
-								source={{
+								source={this.state.user.photo ? {
 									uri: this.state.user.photo
-								}}
+								}: require('@kodabug/images').userPNG}
 								style={style.profile_image}/>
 						</View>
 						<View
 							style={style.profile_right_container}>
 							<Text
-								style={style.user_name}>{this.state.user.usname}</Text>
+								style={style.user_name}>{this.state.user.usname || 'null'}</Text>
 							<Text
-								style={style.user_rank_name}>{'Debugger'}</Text>
+								style={style.user_rank_name}>{this.state.user.usrank || 'null'}</Text>
 							<View
 								style={style.profile_rank_container}>
 								<Ionicon
@@ -65,7 +79,7 @@ export default class GlobalTab extends Component {
 									size={50}
 									color="#ffab2e"/>
 								<Text
-									style={style.profile_rank_count}>1500</Text>
+									style={style.profile_rank_count}>{this.state.user.uspoint || 'null'}</Text>
 							</View>
 						</View>
 					</View>

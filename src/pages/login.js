@@ -37,15 +37,15 @@ export default class Login extends Component {
 
 	loginUser() {
 		let user = {
-			name: this.state.userName,
+			usid: this.state.userName,
 			pass: this.state.userPassword
 		};
-		setUser(user);
-		if (user.name !== '' && user.pass !== '') {
-			UserService.loginUser("loginUser", user.name, user.pass).then(res => {
-				let user = res.result;
-				if (user.username !== -1 && user.password !== -1) {
-					setSessionTicket(String(user.session_ticket));
+		if (user.usid !== '' && user.pass !== '') {
+			UserService.loginUser("loginUser", user.usid, user.pass).then(res => {
+				res = res.result;
+				setUser(user);
+				if (res.username !== -1 && res.password !== -1) {
+					setSessionTicket(String(res.session_ticket));
 					Actions.Main({type: 'reset'})
 				} else {
 					handleErrorAlert('invalid_user');

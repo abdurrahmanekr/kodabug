@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
 	Text,
 	View,
-	StyleSheet
+	StyleSheet,
+	AsyncStorage
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
@@ -19,6 +20,7 @@ export default class Start extends Component {
 	}
 
 	async isLogin() {
+		// await AsyncStorage.removeItem('user')
 		var present = this;
 		isLogin().then((res) => {
 			if(res){

@@ -22,9 +22,7 @@ export async function setSessionTicket(ticket) {
 }
 
 export async function setUser(user) {
-	GLOBALS.user = {
-		name: user.name
-	};
+	GLOBALS.user = user;
 	return await AsyncStorage.setItem("user", JSON.stringify(user));
 }
 
@@ -33,9 +31,7 @@ export async function getUser() {
 	if (user === undefined)
 		return user;
 	user = JSON.parse(user);
-	GLOBALS.user = {
-		name: user.name
-	};
+	GLOBALS.user = user;
 	return user;
 }
 
