@@ -8,7 +8,7 @@ class Config {
 	}
 
 	default() {
-		this.WS_URL =  "http://178.62.101.216:1122/service",
+		this.WS_URL =  "http://api.kodabug.net/service",
 		this.datas = {
 			uploadGame: {
 				method: "",
