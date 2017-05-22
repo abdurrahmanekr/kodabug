@@ -7,50 +7,42 @@ import {StyleSheet} from 'react-native';
 module.exports = StyleSheet.create({
 	body: {
 		flex: 1,
-		padding: 15,
-		backgroundColor: 'rgba(255, 255, 255, 0.9)',
-		justifyContent: 'center'
+		marginTop: 50
 	},
-	headerText: {
-		fontSize: 16,
-		marginTop: 10,
-		marginBottom: 10,
-		marginLeft: 5,
-		marginRight: 5
-
-	},
-	questionInput: {
+	question_name: {
+		fontSize: 20,
+		margin: 15,
 		borderWidth: 1,
-		borderColor: "rgba(0, 0, 0, 0.25)",
-		marginBottom: 6,
-		padding: 7,
-		borderRadius: 5
+		borderColor: '#ccc',
+		borderRadius: 15,
+		paddingLeft: 15
 	},
 	answers: {
-		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	answer: {
+		backgroundColor: '#d66828',
+		borderRadius: 15,
+		marginTop: 10,
+		marginLeft: 15,
+		marginRight: 15,
+		alignSelf: 'stretch',
 	},
 	answerInputs: {
-		flex: 8,
-		flexDirection: 'column',
-		borderWidth: 1,
-		borderColor: "rgba(0, 0, 0, 0.25)",
-		marginBottom: 6,
-		padding: 7,
-		borderRadius: 5
+		textAlign: 'center'
 	},
-	correctAnswerInput: {
-		borderColor: "#ff843c"
+	question_extension: {
+		margin: 15,
+		marginTop: 0
 	},
-	answerRadioButton: {
-		flex: 1,
-		flexDirection: 'column',
-		marginRight: 6,
-		marginBottom: 6,
-		borderWidth: 1,
-		borderColor: "rgba(0, 0, 0, 0.25)",
-		borderRadius: 5,
+	trueOption: {
+		backgroundColor: '#afa',
 	},
-	correctAnswerRadioButton: {
-		backgroundColor: "#ff843c"
+	sendButton: {
+		marginTop: 20,
+		backgroundColor: '#8dec98',
+		padding: 15,
+		borderRadius: 15,
+		alignSelf: 'center',
 	}
 });

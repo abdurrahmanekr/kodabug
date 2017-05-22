@@ -39,6 +39,7 @@ export async function registerUser(){
 export async function uploadGame(){
 	let data = argumentsToData('uploadGame', arguments);
 	let url = encodeServiceData('RegisterService', data);
+	debugger;
 	return fetch(url)
 	.then(res => res.json())
 	.then(res => {

@@ -38,12 +38,10 @@ class RegisterService extends EventEmitter {
 	 * @question_name: soru
 	 * @question_type: 1
 	 * @question_option: cevapların array tipinde çıktısı
-	 * @question_true: doğru cevabın indis değeri
-	 * @birth: kullanıcı doğum günü
 	 * @session_ticket: kullanıcı session datası
 	 */
-	async uploadGame(method, question_name, question_type, question_option, question_true, session_ticket, file="multipart/form-data"){
-		return uploadGame(method, question_name, question_type, question_option, question_true, session_ticket, file).then(res => {
+	async uploadGame(method, question_name, question_type, question_option, question_true, session_ticket){
+		return uploadGame(method, question_name, question_type, question_option, question_true, session_ticket).then(res => {
 			return res;
 		});
 	}

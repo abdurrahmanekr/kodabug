@@ -22,10 +22,10 @@ export default class SendGame extends Component {
 		this.state = {
 			question_name: '',
 			answers: [
-				{id: 0, name: 'cevap1', value: ''},
-				{id: 1, name: 'cevap2', value: ''},
-				{id: 2, name: 'cevap3', value: ''},
-				{id: 3, name: 'cevap4', value: ''},
+				{id: 0, name: 'Şık 1', value: ''},
+				{id: 1, name: 'Şık 2', value: ''},
+				{id: 2, name: 'Şık 3', value: ''},
+				{id: 3, name: 'Şık 4', value: ''},
 			],
 			question_type: "1",
 			correctAnswerId: ""
@@ -39,11 +39,11 @@ export default class SendGame extends Component {
 		});
 
 		getSessionTicket().then(sessionTicket => {
-			RegisterService.uploadGame("uploadGame", this.state.question_name, this.state.question_type, question_option, this.state.correctAnswerId, sessionTicket).then(res => {
-				if(res.result.exist != "1" && res.result.question_id){
+			RegisterService.uploadGame("uploadGame", this.state.question_name, this.state.question_type, question_option, 0, sessionTicket).then(res => {
+				if (res.result.exist != "1" && res.result.question_id) {
 					Alert.alert("Soru gönderildi, teşekkürler!");
 					this.setState({modalVisible: false});
-				}else{
+				} else {
 					Alert.alert("Bir şeyler ters gitti");
 				}
 			})
@@ -54,45 +54,49 @@ export default class SendGame extends Component {
 	render() {
 		return (
 			<View style={style.body}>
-				<Text style={style.headerText}>
-					Soruyu belirtilen kurallarla yazınız, aşağıdaki cevap girdilerine şıkları belirtin ve doğru cevabı soldaki kutucuktan işaretleyin.
-				</Text>
-				<TextInput underlineColorAndroid="transparent"
-					style={style.questionInput}
-					placeholder="Soru"
-					value={this.state.question_name}
+				<TextInput
+					underlineColorAndroid="transparent"
+					style={style.question_name}
+					placeholder={'Soru'}
 					multiline={true}
-					numberOfLines={5}
-					onChangeText={(value) => this.setState({question_name: value})}/>
-
+					onChangeText={(value) => {
+						this.setState({question_name: value});
+					}}/>
+				{
+					this.state.question_extension !== undefined ? <Text
+						style={style.question_extension}>
+						{this.state.question_extension}
+					</Text>: null
+				}
+				<View
+					style={style.answers}>
 				{
 					this.state.answers.map((answer, key) => {
 						return(
-							<View style={style.answers} key={key}>
-								<TouchableOpacity
-									onPress={() => this.setState({correctAnswerId: key})}
-									style={[this.state.correctAnswerId === key ? style.correctAnswerRadioButton : "", style.answerRadioButton]}>
-									<View/>
-								</TouchableOpacity>
+							<TouchableOpacity
+								style={[style.answer, key == 0 ? style.trueOption : {}]}
+								key={key}
+								onPress={() => this.setState({correctAnswerId: key})}>
 								<TextInput
 									underlineColorAndroid="transparent"
-									style={[this.state.correctAnswerId === key ? style.correctAnswerInput : "", style.answerInputs]}
-									placeholder={answer.name}
+									style={style.answerInputs}
+									placeholder={key == 0 ? 'Doğru Cevap' : answer.name}
 									value={answer.value}
 									onChangeText={(value) => {
 										this.state.answers[key].value = value;
 										this.setState({answers: this.state.answers});
 									}}/>
-							</View>
+							</TouchableOpacity>
 						)
 					})
 				}
+				</View>
 
-				<Button
-					title="Gönder"
-					onPress={this.uploadGame.bind(this)}
-					color="#ff843c"
-					accessibilityLabel="Soruyu gönder"/>
+				<TouchableOpacity
+					style={style.sendButton}
+					onPress={this.uploadGame.bind(this)}>
+					<Text>İnsert into</Text>
+				</TouchableOpacity>
 			</View>
 		);
 	}
