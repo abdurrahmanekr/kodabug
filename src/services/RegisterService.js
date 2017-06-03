@@ -26,7 +26,7 @@ class RegisterService extends EventEmitter {
 	/*
 	 * yeni bir oyun oluşturmayı sağlar
 	 */
-	async uploadGame(){
+	async uploadGame(data){
 		return WebService.uploadGame(data)
 	}
 }
