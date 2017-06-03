@@ -5,9 +5,8 @@ import {
 } from 'react-native';
 
 import {
-	registerUser,
-	uploadGame
-} from '@kodabug/providers/web-service';
+	WebService
+} from '@kodabug/providers';
 
 import {getArgs} from '@kodabug/common';
 
@@ -18,32 +17,17 @@ class RegisterService extends EventEmitter {
 	}
 
 	/*
-	 * Bu method yeni bir kullanıcı oluşturmayı sağlar.
-	 * @method: serviste kullanılan method girdisi
-	 * @name: kullanıcı adı
-	 * @surname: kullanımı soyadı
-	 * @mail: kullanıcı mail adresi
-	 * @pass: kullanıcı şifresi
-	 * @birth: kullanıcı doğum günü
+	 * yeni bir kullanıcı oluşturmayı sağlar.
 	 */
-	async registerUser(method, name, surname, mail, pass, birth){
-		return registerUser(method, name, surname, mail, pass, birth).then(res => {
-			return res;
-		});
+	async registerUser(data){
+		return WebService.registerUser(data)
 	}
 
 	/*
-	 * Bu method yeni bir oyun oluşturmayı sağlar
-	 * @method: serviste kullanılan method girdisi
-	 * @question_name: soru
-	 * @question_type: 1
-	 * @question_option: cevapların array tipinde çıktısı
-	 * @session_ticket: kullanıcı session datası
+	 * yeni bir oyun oluşturmayı sağlar
 	 */
-	async uploadGame(method, question_name, question_type, question_option, question_true, session_ticket){
-		return uploadGame(method, question_name, question_type, question_option, question_true, session_ticket).then(res => {
-			return res;
-		});
+	async uploadGame(){
+		return WebService.uploadGame(data)
 	}
 }
 

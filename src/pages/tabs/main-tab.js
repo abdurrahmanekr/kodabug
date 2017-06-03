@@ -9,7 +9,10 @@ import {
 	Alert
 } from 'react-native';
 
-import {UserService, GameService} from '@kodabug/services';
+import {
+	UserService,
+	GameService
+} from '@kodabug/services';
 
 import {
 	getSessionTicket
@@ -29,35 +32,34 @@ export default class MainTab extends Component {
 			user: { }
 		}
 		this.loadUserData();
-
-		getSessionTicket().then(sessionTicket => {
-			GameService.getGameList("getGameList", sessionTicket).then(games => {
-				if (games.result instanceof Array)
-					games.result.map((game, key) => {
-						UserService.getUserVCard("getUserVCard", game.grivalid, sessionTicket).then(user => {
-							this.state.games.push({
-								name: user.result.usname,
-								rank: "rank",
-								date: '05-05-05',
-								avatarUri: user.result.photo,
-								uspoint: game.uspoint,
-								rivalpoint: game.rivalpoint
-							});
-							this.setState({games: this.state.games});
-						});
-					})
-			})
-		})
 	}
 
 	async loadUserData() {
 		var self = this;
-		UserService.loadUserData.bind(this)().then((user) => {
+		UserService.loadUserData().then((user) => {
 			if (user instanceof Object && GLOBALS.user !== undefined)
 				self.setState({
 					user: GLOBALS.user
 				})
 		});
+
+		// gamelist güncelleniyor
+		GameService.getGameList().then(games => {
+			if (games.result instanceof Array)
+				games.result.map((game, key) => {
+					UserService.getUserVCard({ usid: game.grivalid }).then(user => {
+						self.state.games.push({
+							name: user.result.usname,
+							rank: "rank",
+							date: '05-05-05',
+							avatarUri: user.result.photo,
+							uspoint: game.uspoint,
+							rivalpoint: game.rivalpoint
+						});
+						self.setState({games: self.state.games});
+					});
+				})
+		})
 	}
 
 	render() {

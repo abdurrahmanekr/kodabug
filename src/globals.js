@@ -15,3 +15,5 @@ if (typeof GLOBALS === 'undefined') {
 		}
 	}
 }
+
+GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;

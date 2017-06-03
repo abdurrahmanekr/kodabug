@@ -23,6 +23,21 @@ export async function logOut() {
 	return true;
 }
 
+export async function sendGET(service, method, data) {
+	data = data || {};
+	data.method = method;
+	data.session_ticket = await AsyncStorage.getItem('session_ticket');
+
+	return await fetch(encodeServiceData(service, data))
+	.then(res => res.json())
+	.then(res => {
+		return res
+	})
+	.catch(res => {
+		return 'connection_error';
+	})
+}
+
 export async function setSessionTicket(ticket) {
 	AsyncStorage.setItem("session_ticket", ticket);
 }
@@ -51,31 +66,6 @@ export function getSessionTicket(){
 
 export function encodeServiceData(service, params) {
 	return Config.WS_URL + '/' + service + '?data=' + JSON.stringify(params);
-}
-
-/*
- * Bu method, fonksiyona verilen argümanların parametresiz alınması ve argümanların
- * kullanılabilir olarak döndürebilmesine yarar.
- * @args: fonksiyon içerisinde `arguments` değeri girilir.
-*/
-
-export function getArgs(args){
-	return [].slice.apply(args)
-}
-
-/*
- * Bu method, argümanların URL yapısındaki `data` tipine çevrilebilmesine yarayan fonksiyon.
- * @method:  serviste kullanılan method girdisi
- * @args: 'getArgs' fonksiyonuna gönderilecek olan `arguments` değeri.
-*/
-
-export function argumentsToData(method, args){
-	data = Config.init(method);
-	args = getArgs(args);
-	Object.keys(data).map((objKey, key) => {
-		data[objKey] = args[key];
-	});
-	return data;
 }
 
 /*

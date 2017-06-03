@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 
 import { RegisterService } from '@kodabug/services';
-import { getSessionTicket } from '@kodabug/common';
 
 import style from '@kodabug/style/send-game';
 
@@ -38,15 +37,18 @@ export default class SendGame extends Component {
 			question_option.push(String(answer.value));
 		});
 
-		getSessionTicket().then(sessionTicket => {
-			RegisterService.uploadGame("uploadGame", this.state.question_name, this.state.question_type, question_option, 0, sessionTicket).then(res => {
-				if (res.result.exist != "1" && res.result.question_id) {
-					Alert.alert("Soru gönderildi, teşekkürler!");
-					this.setState({modalVisible: false});
-				} else {
-					Alert.alert("Bir şeyler ters gitti");
-				}
-			})
+		RegisterService.uploadGame({
+			question_name: this.state.question_name,
+			question_type: this.state.question_type,
+			question_option: question_option,
+			question_true: 0
+		}).then(res => {
+			if (res.result.exist != "1" && res.result.question_id) {
+				Alert.alert("Soru gönderildi, teşekkürler!");
+				this.setState({modalVisible: false});
+			} else {
+				Alert.alert("Bir şeyler ters gitti");
+			}
 		})
 
 	}

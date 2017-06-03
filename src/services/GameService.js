@@ -4,7 +4,9 @@ import {
 	Alert
 } from 'react-native';
 
-import {getGameList} from '@kodabug/providers/web-service';
+import {
+	WebService
+} from '@kodabug/providers';
 
 import {
 	getSessionTicket
@@ -12,19 +14,16 @@ import {
 
 class GameService extends EventEmitter {
 	constructor(props) {
-	  super(props);
+		super(props);
 
-	  this.state = {};
+		this.state = {};
 	}
 
 	/*
 	 * Kullanıcının oynamış olduğu oyunların listesini getirir
-	 * @session_ticket: kullanıcının session_ticket bilgisi
 	*/
-	async getGameList(method, session_ticket){
-		return getGameList(method, session_ticket).then(res => {
-			return res;
-		});
+	async getGameList(data){
+		return WebService.getGameList(data)
 	}
 }
 

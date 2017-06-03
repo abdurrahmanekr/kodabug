@@ -5,9 +5,8 @@ import {
 } from 'react-native';
 
 import {
-	loginUser,
-	getUserVCard
-} from '@kodabug/providers/web-service';
+	WebService
+} from '@kodabug/providers';
 
 import {
 	getUser,
@@ -29,7 +28,7 @@ class UserService extends EventEmitter {
 		return new Promise((resolve, reject) => {
 			getUser().then(user => {
 				if (user !== undefined)
-					getUserVCard("getUserVCard", GLOBALS.user.usid).then(res => {
+					self.getUserVCard({ usid: GLOBALS.user.usid }).then(res => {
 						if (res.result != -1)
 							setUser(res.result);
 						resolve(res.result);
@@ -43,19 +42,11 @@ class UserService extends EventEmitter {
 
 	/*
 	 * Bu method kullancının giriş yapmasını sağlar
-	 * @name: kullanıcı adı
-	 * @pass: kullanıcı şifresi
+	 * @usname: kullanıcı adı
+	 * @password: kullanıcı şifresi
 	*/
-	async loginUser(method, name, pass) {
-		return new Promise((resolve, reject) => {
-			loginUser(method, name, pass).then(res => {
-				if (res === 'connection_error') {
-					reject(res);
-					return;
-				}
-				resolve(res);
-			})
-		})
+	async loginUser(data) {
+		return WebService.loginUser(data)
 	}
 
 	/*
@@ -63,10 +54,8 @@ class UserService extends EventEmitter {
 	 * @usid: kullanıcı adı veya maili
 	 * @session_ticket: kullanıcının session_ticket bilgisi
 	*/
-	async getUserVCard(method, usid, session_ticket) {
-		return getUserVCard(method, usid, session_ticket).then(res => {
-			return res;
-		});
+	async getUserVCard(data) {
+		return WebService.getUserVCard(data)
 	}
 }
 

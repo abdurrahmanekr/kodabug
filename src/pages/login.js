@@ -41,7 +41,10 @@ export default class Login extends Component {
 			pass: this.state.userPassword
 		};
 		if (user.usid !== '' && user.pass !== '') {
-			UserService.loginUser("loginUser", user.usid, user.pass).then(res => {
+			UserService.loginUser({
+				usname: user.usid,
+				password: user.pass
+			}).then(res => {
 				res = res.result;
 				setUser(user);
 				if (res.username !== -1 && res.password !== -1) {

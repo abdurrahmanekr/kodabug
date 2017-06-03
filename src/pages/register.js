@@ -45,14 +45,13 @@ export default class Register extends Component{
 			this.state.usmail !== ''  &&
 			this.state.password !== '' &&
 			this.state.birth !== '') {
-			RegisterService.registerUser(
-				"register",
-				this.state.usname,
-				this.state.surname,
-				this.state.usmail,
-				this.state.password,
-				this.state.birth
-			).then(res => {
+			RegisterService.registerUser({
+				usname: this.state.usname,
+				surname: this.state.surname,
+				usmail: this.state.usmail,
+				password: this.state.password,
+				birth: this.state.birth,
+			}).then(res => {
 				if (res.result === -1)
 					handleErrorAlert('invalid_register_user')
 				else if (res.result.exist === 1)
