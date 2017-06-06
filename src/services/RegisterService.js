@@ -29,6 +29,13 @@ class RegisterService extends EventEmitter {
 	async uploadGame(data){
 		return WebService.uploadGame(data)
 	}
+
+	/*
+	 * kullanıcının profilini günceller
+	*/
+	async updateProfile(data) {
+		return WebService.updateProfile(data)
+	}
 }
 
 

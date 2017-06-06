@@ -30,6 +30,10 @@ class WebService {
 	async getGameList(data) {
 		return sendGET('GameService', 'getGameList', data)
 	}
+
+	async updateProfile(data) {
+		return sendGET('RegisterService', 'updateProfile', data)
+	}
 }
 
 module.exports = new WebService();

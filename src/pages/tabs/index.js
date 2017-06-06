@@ -8,6 +8,7 @@ import CustomTabBar from './custom-tab-bar';
 import MainTab from './main-tab';
 import SendGame from './send-game';
 import GlobalTab from './global-tab';
+import SettingProfile from './setting-profile';
 
 export {
 	CommunityTab,
@@ -15,5 +16,6 @@ export {
 	CustomTabBar,
 	MainTab,
 	SendGame,
-	GlobalTab
+	GlobalTab,
+	SettingProfile
 }

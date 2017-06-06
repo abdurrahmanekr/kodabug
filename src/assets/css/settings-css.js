@@ -91,5 +91,40 @@ module.exports = StyleSheet.create({
 		justifyContent:'center',
 		backgroundColor:'#587e94',
 		borderRadius:5
+	},
+	set_profile_save_button: {
+		marginTop: -5
+	},
+	set_profile_image: {
+		alignSelf: 'center',
+		width: 120,
+		height: 120,
+		margin: 20,
+		marginBottom: 10
+	},
+	set_profile_image_text: {
+		alignSelf: 'center',
+		marginBottom: 10,
+		fontSize: 15
+	},
+	set_profile_input: {
+		borderWidth: 1,
+		borderColor: '#ccc',
+		padding: 5,
+		paddingLeft: 20,
+		borderRadius: 5,
+		marginBottom: 15,
+		minHeight: 40,
+		flex: 1,
+		marginLeft: 10
+	},
+	set_profile_input_icon: {
+		width: 30
+	},
+	set_profile_label: {
+		paddingLeft: 15,
+		paddingRight: 15,
+		marginTop: 10,
+		flexDirection: 'row',
 	}
 });

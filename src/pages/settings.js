@@ -31,6 +31,11 @@ export default class Settings extends Component {
 					icon: 'sign-out',
 					name: 'Çıkış Yap',
 					handler: 'sign-out'
+				},
+				{
+					icon: 'user',
+					name: 'Profili Düzenle',
+					handler: 'profile-edit'
 				}
 			]
 		};
@@ -62,6 +67,9 @@ export default class Settings extends Component {
 				logOut().then(() => {
 					Actions.Login({type: 'reset'});
 				});
+				break;
+			case 'profile-edit':
+				Actions.SettingProfile();
 				break;
 		}
 	}
