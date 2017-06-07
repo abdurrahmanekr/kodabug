@@ -24,7 +24,8 @@ import {
 
 import {
 	SendGame,
-	SettingProfile
+	SettingProfile,
+	SettingAccount
 } from '@kodabug/tabs';
 
 import {setCustomText} from 'react-native-global-props';
@@ -44,6 +45,7 @@ export default class kodabug extends Component {
 				<Scene key="Settings" hideNavBar={false} direction='vertical'>
 					<Scene key="SettingsMain" component={Settings} title="Ayarlar" />
 					<Scene key="SettingProfile" component={SettingProfile} title="Profili Düzenle" />
+					<Scene key="SettingAccount" component={SettingAccount} title="Hesabı Düzenle" />
 				</Scene>
 			</Scene>
 		);

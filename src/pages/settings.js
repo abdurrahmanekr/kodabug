@@ -36,6 +36,11 @@ export default class Settings extends Component {
 					icon: 'user',
 					name: 'Profili Düzenle',
 					handler: 'profile-edit'
+				},
+				{
+					icon: 'info',
+					name: 'Hesabı Düzenle',
+					handler: 'account-edit'
 				}
 			]
 		};
@@ -70,6 +75,9 @@ export default class Settings extends Component {
 				break;
 			case 'profile-edit':
 				Actions.SettingProfile();
+				break;
+			case 'account-edit':
+				Actions.SettingAccount();
 				break;
 		}
 	}
