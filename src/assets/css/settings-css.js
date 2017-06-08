@@ -92,6 +92,9 @@ module.exports = StyleSheet.create({
 		backgroundColor:'#587e94',
 		borderRadius:5
 	},
+	set_profile_scroll: {
+		paddingBottom: 50
+	},
 	set_profile_save_button: {
 		marginTop: -5
 	},
@@ -126,5 +129,9 @@ module.exports = StyleSheet.create({
 		paddingRight: 15,
 		marginTop: 10,
 		flexDirection: 'row',
+	},
+	set_profile_divider: {
+		padding: 20,
+		fontSize: 20
 	}
 });

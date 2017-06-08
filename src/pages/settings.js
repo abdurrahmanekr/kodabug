@@ -38,8 +38,8 @@ export default class Settings extends Component {
 					handler: 'profile-edit'
 				},
 				{
-					icon: 'info',
-					name: 'Hesabı Düzenle',
+					icon: 'lock',
+					name: 'Şifre Değişikliği',
 					handler: 'account-edit'
 				}
 			]
@@ -77,7 +77,7 @@ export default class Settings extends Component {
 				Actions.SettingProfile();
 				break;
 			case 'account-edit':
-				Actions.SettingAccount();
+				Actions.SettingPassword();
 				break;
 		}
 	}

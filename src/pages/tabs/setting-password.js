@@ -21,30 +21,14 @@ import {
 	RegisterService
 } from '@kodabug/services';
 
-export default class SettingAccount extends Component {
+export default class SettingPassword extends Component {
 	constructor(props) {
 		super(props);
 
-		if (GLOBALS.user !== undefined)
-			this.state = {
-				copo: GLOBALS.user.copo,
-				hepo: GLOBALS.user.hepo,
-				bugpo: GLOBALS.user.bugpo,
-				fipo: GLOBALS.user.fipo,
-				keypo: GLOBALS.user.keypo,
-				usname: GLOBALS.user.usname,
-				username: GLOBALS.user.username,
-				surname: GLOBALS.user.surname,
-				uspoint: GLOBALS.user.uspoint,
-				photo: GLOBALS.user.photo,
-				usmail: GLOBALS.user.usmail,
-				birth: GLOBALS.user.birth
-
-			};
-		else
-			this.state = {
-				change: false
-			};
+		this.state = {
+			password: '',
+			newPassword: ''
+		};
 	}
 
 	componentWillMount() {
@@ -111,11 +95,16 @@ export default class SettingAccount extends Component {
 					text: "Kaydet",
 					onPress: () => {
 						RegisterService.updateProfile({
-							"usname": self.state.usname,
-							"usmail": self.state.usmail,
-							"birth": self.state.birth
+							password: this.state.password,
+							newpassword: this.state.newpassword,
+						}).then(res => {
+							this.setState({change: false});
+							if (res.result == "1") {
+								Alert.alert("Başarılı!", "Yeni Şifre Kaydedildi!");
+							} else {
+								Alert.alert("Başarısız!", "Şifrenizi doğru girdiğinize emin olun");
+							}
 						})
-						Actions.pop();
 					},
 				},
 				{
@@ -133,27 +122,27 @@ export default class SettingAccount extends Component {
 			 		style={style.set_profile_label}>
 					<Kohana
 						style={{ backgroundColor: '#f9f5ed' }}
-						label={'Mail'}
+						label={'Eski Şifreniz'}
 						iconClass={Icon}
 						iconName={'mail'}
 						iconColor={'#f4d29a'}
 						labelStyle={{ color: '#91627b' }}
 						inputStyle={{ color: '#91627b' }}
-						defaultValue={this.state.usmail}
-						onChangeText={(value) => this.changeValue.bind(this)('usmail', value)}/>
+						defaultValue={this.state.password}
+						onChangeText={(value) => this.changeValue.bind(this)('password', value)}/>
 				</View>
 				<View
 			 		style={style.set_profile_label}>
 					<Kohana
 						style={{ backgroundColor: '#f9f5ed' }}
-						label={'Mail'}
+						label={'Yeni Şifreniz'}
 						iconClass={Icon}
 						iconName={'date-range'}
 						iconColor={'#f4d29a'}
 						labelStyle={{ color: '#91627b' }}
 						inputStyle={{ color: '#91627b' }}
-						defaultValue={this.state.birth}
-						onChangeText={(value) => this.changeValue.bind(this)('birth', value)}/>
+						defaultValue={this.state.newpassword}
+						onChangeText={(value) => this.changeValue.bind(this)('newpassword', value)}/>
 				</View>
 
 			</View>

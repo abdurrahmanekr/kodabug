@@ -9,7 +9,7 @@ class Config {
 
 	default() {
 		this.WS_URL =  "http://api.kodabug.net/service";
-		// this.WS_URL =  "http://192.168.1.100/kodabug/service",
+		// this.WS_URL =  "http://192.168.1.101/kodabug/service";
 	}
 }
 

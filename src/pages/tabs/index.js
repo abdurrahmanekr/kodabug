@@ -9,7 +9,7 @@ import MainTab from './main-tab';
 import SendGame from './send-game';
 import GlobalTab from './global-tab';
 import SettingProfile from './setting-profile';
-import SettingAccount from './setting-account';
+import SettingPassword from './setting-password';
 
 export {
 	CommunityTab,
@@ -19,5 +19,5 @@ export {
 	SendGame,
 	GlobalTab,
 	SettingProfile,
-	SettingAccount
+	SettingPassword
 }

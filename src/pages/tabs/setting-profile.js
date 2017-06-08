@@ -6,7 +6,9 @@ import {
 	Image,
 	TextInput,
 	TouchableOpacity,
-	Alert
+	Alert,
+	Platform,
+	ScrollView
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
@@ -15,11 +17,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons'; // icon kütüphanes
 
 import { Kohana } from 'react-native-textinput-effects';
 
-import style from '@kodabug/style/settings';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
-import {
-	SearchBar
-} from 'react-native-elements';
+import style from '@kodabug/style/settings';
 
 import {
 	RegisterService
@@ -31,16 +31,11 @@ export default class SettingProfile extends Component {
 
 		if (GLOBALS.user !== undefined)
 			this.state = {
-				copo: GLOBALS.user.copo,
-				hepo: GLOBALS.user.hepo,
-				bugpo: GLOBALS.user.bugpo,
-				fipo: GLOBALS.user.fipo,
-				keypo: GLOBALS.user.keypo,
 				usname: GLOBALS.user.usname,
-				username: GLOBALS.user.username,
 				surname: GLOBALS.user.surname,
-				uspoint: GLOBALS.user.uspoint,
-				photo: GLOBALS.user.photo
+				username: GLOBALS.user.username,
+				usmail: GLOBALS.user.usmail,
+				birth: GLOBALS.user.birth
 			};
 		else
 			this.state = {
@@ -113,8 +108,16 @@ export default class SettingProfile extends Component {
 					onPress: () => {
 						RegisterService.updateProfile({
 							"usname": self.state.usname,
+							"username": self.state.username,
 							"usmail": self.state.usmail,
 							"birth": self.state.birth
+						}).then(res => {
+							this.setState({change: false});
+							if (res.result == "1") {
+								Alert.alert("Başarılı!", "Bilgileriniz Kaydedildi!");
+							} else {
+								Alert.alert("Başarısız!", "Girdiğiniz değerler kullanılıyor");
+							}
 						})
 					},
 				},
@@ -130,68 +133,96 @@ export default class SettingProfile extends Component {
 		return (
 			<View
 				style={style.body}>
+				<ScrollView
+					contentContainerStyle={style.set_profile_scroll}>
+					<TouchableOpacity>
+						<Image
+							source={this.state.photo ? {
+								uri: this.state.photo
+							} : require('@kodabug/images').userPNG}
+							style={style.set_profile_image}/>
+						<Text
+							style={style.set_profile_image_text}>
+							Resmi Değiştir
+						</Text>
+					</TouchableOpacity>
 
-				<TouchableOpacity>
-					<Image
-						source={this.state.photo ? {
-							uri: this.state.photo
-						} : require('@kodabug/images').userPNG}
-						style={style.set_profile_image}/>
+					<View
+						style={style.set_profile_label}>
+						<Kohana
+							style={{ backgroundColor: '#f9f5ed' }}
+							label={'Ad'}
+							iconClass={Icon}
+							iconName={'person'}
+							iconColor={'#f4d29a'}
+							labelStyle={{ color: '#91627b' }}
+							inputStyle={{ color: '#91627b' }}
+							defaultValue={this.state.usname}
+							onChangeText={(value) => this.changeValue.bind(this)('usname', value)}/>
+					</View>
+
+					<View
+						style={style.set_profile_label}>
+						<Kohana
+							style={{ backgroundColor: '#f9f5ed' }}
+							label={'Soyad'}
+							iconClass={Icon}
+							iconName={'person'}
+							iconColor={'#f4d29a'}
+							labelStyle={{ color: '#91627b' }}
+							inputStyle={{ color: '#91627b' }}
+							defaultValue={this.state.surname}
+							onChangeText={(value) => this.changeValue.bind(this)('surname', value)}/>
+					</View>
+
+					<View
+						style={style.set_profile_label}>
+						<Kohana
+							style={{ backgroundColor: '#f9f5ed' }}
+							label={'Kullanıcı Adı'}
+							iconClass={Icon}
+							iconName={'person-pin-circle'}
+							iconColor={'#f4d29a'}
+							labelStyle={{ color: '#91627b' }}
+							inputStyle={{ color: '#91627b' }}
+							defaultValue={this.state.username}
+							onChangeText={(value) => this.changeValue.bind(this)('username', value)}/>
+					</View>
+
 					<Text
-						style={style.set_profile_image_text}>
-						Resmi Değiştir
+						style={style.set_profile_divider}>
+						Gizlilik Ayarları
 					</Text>
-				</TouchableOpacity>
 
-				<SearchBar
-					round
-					lightTheme
-					showLoadingIcon={true}
-					clearIcon={{color: '#86939e', name: 'close'}}
-					placeholder='Type Here...' />
+					<View
+						style={style.set_profile_label}>
+						<Kohana
+							style={{ backgroundColor: '#f9f5ed' }}
+							label={'E-mail'}
+							iconClass={Icon}
+							iconName={'mail'}
+							iconColor={'#f4d29a'}
+							labelStyle={{ color: '#91627b' }}
+							inputStyle={{ color: '#91627b' }}
+							defaultValue={this.state.usmail}
+							onChangeText={(value) => this.changeValue.bind(this)('usmail', value)}/>
+					</View>
 
-
-				<View
-					style={style.set_profile_label}>
-					<Kohana
-						style={{ backgroundColor: '#f9f5ed' }}
-						label={'Ad'}
-						iconClass={Icon}
-						iconName={'person'}
-						iconColor={'#f4d29a'}
-						labelStyle={{ color: '#91627b' }}
-						inputStyle={{ color: '#91627b' }}
-						defaultValue={this.state.usname}
-						onChangeText={(value) => this.changeValue.bind(this)('usname', value)}/>
-				</View>
-
-				<View
-					style={style.set_profile_label}>
-					<Kohana
-						style={{ backgroundColor: '#f9f5ed' }}
-						label={'Kullanıcı Adı'}
-						iconClass={Icon}
-						iconName={'person-pin-circle'}
-						iconColor={'#f4d29a'}
-						labelStyle={{ color: '#91627b' }}
-						inputStyle={{ color: '#91627b' }}
-						defaultValue={this.state.username}
-						onChangeText={(value) => this.changeValue.bind(this)('username', value)}/>
-				</View>
-
-				<View
-					style={style.set_profile_label}>
-					<Kohana
-						style={{ backgroundColor: '#f9f5ed' }}
-						label={'E-mail'}
-						iconClass={Icon}
-						iconName={'mail'}
-						iconColor={'#f4d29a'}
-						labelStyle={{ color: '#91627b' }}
-						inputStyle={{ color: '#91627b' }}
-						defaultValue={this.state.usmail}
-						onChangeText={(value) => this.changeValue.bind(this)('usmail', value)}/>
-				</View>
+					<View
+				 		style={style.set_profile_label}>
+						<Kohana
+							style={{ backgroundColor: '#f9f5ed' }}
+							label={'Mail'}
+							iconClass={Icon}
+							iconName={'date-range'}
+							iconColor={'#f4d29a'}
+							labelStyle={{ color: '#91627b' }}
+							inputStyle={{ color: '#91627b' }}
+							defaultValue={this.state.birth}
+							onChangeText={(value) => this.changeValue.bind(this)('birth', value)}/>
+					</View>
+				</ScrollView>
+				{Platform.OS === 'ios' && <KeyboardSpacer/>}
 			</View>
 		);
 	}
