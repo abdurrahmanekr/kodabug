@@ -28,13 +28,15 @@ export async function sendGET(service, method, data) {
 	data.method = method;
 	data.session_ticket = await AsyncStorage.getItem('session_ticket');
 
-	return await fetch(encodeServiceData(service, data))
-	.then(res => res.json())
-	.then(res => {
-		return res
-	})
-	.catch(res => {
-		return 'connection_error';
+	return new Promise((resolve, reject) => {
+		fetch(encodeServiceData(service, data))
+		.then(res => res.json())
+		.then(res => {
+			resolve(res);
+		})
+		.catch(res => {
+			reject('connection_error');
+		})
 	})
 }
 

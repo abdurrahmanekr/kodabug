@@ -8,8 +8,12 @@ import {
 	Alert,
 	TextInput,
 	Button,
-	TouchableOpacity
+	TouchableOpacity,
+	ScrollView,
+	Platform
 } from 'react-native';
+
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 import { RegisterService } from '@kodabug/services';
 
@@ -56,49 +60,54 @@ export default class SendGame extends Component {
 	render() {
 		return (
 			<View style={style.body}>
-				<TextInput
-					underlineColorAndroid="transparent"
-					style={style.question_name}
-					placeholder={'Soru'}
-					multiline={true}
-					onChangeText={(value) => {
-						this.setState({question_name: value});
-					}}/>
-				{
-					this.state.question_extension !== undefined ? <Text
-						style={style.question_extension}>
-						{this.state.question_extension}
-					</Text>: null
-				}
-				<View
-					style={style.answers}>
-				{
-					this.state.answers.map((answer, key) => {
-						return(
-							<TouchableOpacity
-								style={[style.answer, key == 0 ? style.trueOption : {}]}
-								key={key}
-								onPress={() => this.setState({correctAnswerId: key})}>
-								<TextInput
-									underlineColorAndroid="transparent"
-									style={style.answerInputs}
-									placeholder={key == 0 ? 'Doğru Cevap' : answer.name}
-									value={answer.value}
-									onChangeText={(value) => {
-										this.state.answers[key].value = value;
-										this.setState({answers: this.state.answers});
-									}}/>
-							</TouchableOpacity>
-						)
-					})
-				}
-				</View>
+				<ScrollView
+					contentContainerStyle={style.bodyScroll}>
+					<TextInput
+						underlineColorAndroid="transparent"
+						style={style.question_name}
+						placeholder={'Soru'}
+						placeholderTextColor="#ccc"
+						multiline={true}
+						onChangeText={(value) => {
+							this.setState({question_name: value});
+						}}/>
+					{
+						this.state.question_extension !== undefined ? <Text
+							style={style.question_extension}>
+							{this.state.question_extension}
+						</Text>: null
+					}
+					<View
+						style={style.answers}>
+					{
+						this.state.answers.map((answer, key) => {
+							return(
+								<TouchableOpacity
+									style={[style.answer, key == 0 ? style.trueOption : {}]}
+									key={key}
+									onPress={() => this.setState({correctAnswerId: key})}>
+									<TextInput
+										underlineColorAndroid="transparent"
+										style={style.answerInputs}
+										placeholder={key == 0 ? 'Doğru Cevap' : answer.name}
+										value={answer.value}
+										onChangeText={(value) => {
+											this.state.answers[key].value = value;
+											this.setState({answers: this.state.answers});
+										}}/>
+								</TouchableOpacity>
+							)
+						})
+					}
+					</View>
 
-				<TouchableOpacity
-					style={style.sendButton}
-					onPress={this.uploadGame.bind(this)}>
-					<Text>İnsert into</Text>
-				</TouchableOpacity>
+					<TouchableOpacity
+						style={style.sendButton}
+						onPress={this.uploadGame.bind(this)}>
+						<Text>İnsert into</Text>
+					</TouchableOpacity>
+				</ScrollView>
+				{Platform.OS === 'ios' && <KeyboardSpacer/>}
 			</View>
 		);
 	}

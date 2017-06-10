@@ -9,13 +9,18 @@ module.exports = StyleSheet.create({
 		flex: 1,
 		marginTop: 50
 	},
+	bodyScroll: {
+		paddingBottom: 50
+	},
 	question_name: {
 		fontSize: 20,
 		margin: 15,
 		borderWidth: 1,
-		borderColor: '#ccc',
+		borderColor: '#eee',
 		borderRadius: 15,
-		paddingLeft: 15
+		paddingLeft: 15,
+		minHeight: 50,
+		color: '#333'
 	},
 	answers: {
 		alignItems: 'center',
@@ -29,7 +34,9 @@ module.exports = StyleSheet.create({
 		alignSelf: 'stretch',
 	},
 	answerInputs: {
-		textAlign: 'center'
+		textAlign: 'center',
+		height: 50,
+		color: '#333'
 	},
 	question_extension: {
 		margin: 15,
