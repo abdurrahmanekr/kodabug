@@ -96,11 +96,11 @@ export default class kodabug extends Component {
 	}
 }
 
-const customTextProps = {
-  style: {
-	fontFamily: 'SourceSansPro-Regular'
-  }
-}
-setCustomText(customTextProps);
+// const customTextProps = {
+//   style: {
+// 	fontFamily: 'SourceSansPro-Regular'
+//   }
+// }
+// setCustomText(customTextProps);
 
 AppRegistry.registerComponent('kodabug', () => kodabug);
