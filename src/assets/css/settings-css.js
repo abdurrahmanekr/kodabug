@@ -1,12 +1,19 @@
 /**
  * @providesModule @kodabug/style/settings
  */
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 module.exports = StyleSheet.create({
 	body: {
 		flex: 1,
-		marginTop: 50
+		...Platform.select({
+			ios: {
+				marginTop: 64
+			},
+			android: {
+				marginTop: 50
+			}
+		})
 	},
 	list: {
 		borderBottomWidth: 0,

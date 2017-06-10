@@ -6,7 +6,8 @@ import {
 	AppRegistry,
 	StyleSheet,
 	StatusBar,
-	View
+	View,
+	Platform
 } from 'react-native';
 
 import {Actions, Scene, Router} from 'react-native-router-flux';
@@ -54,7 +55,14 @@ export default class kodabug extends Component {
 			navBar: {
 				backgroundColor: '#ff843c',
 				borderBottomWidth: 0,
-				height: 50
+				...Platform.select({
+					android: {
+						height: 50,
+					},
+					ios: {
+						height: 64,
+					}
+				})
 			},
 			navTitle: {
 				color: '#fff'

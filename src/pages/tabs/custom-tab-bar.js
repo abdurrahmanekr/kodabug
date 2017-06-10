@@ -4,6 +4,7 @@ import {
 	Text,
 	View,
 	TouchableOpacity,
+	Platform,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // icon kütüphanesi
 
@@ -66,14 +67,22 @@ const styles = StyleSheet.create({
 	},
 	tabs: {
 		backgroundColor: '#ff843c',
-		height: 50,
 		flexDirection: 'row',
-		paddingTop: 5,
 		borderWidth: 1,
 		borderTopWidth: 0,
 		borderLeftWidth: 0,
 		borderRightWidth: 0,
 		borderBottomColor: 'rgba(0,0,0,0.05)',
+		...Platform.select({
+			android: {
+				paddingTop: 5,
+				height: 50
+			},
+			ios: {
+				paddingTop: 22,
+				height: 64
+			},
+		})
 	}
 });
 
