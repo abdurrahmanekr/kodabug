@@ -59,7 +59,8 @@ export default class GlobalTab extends Component {
 						<TouchableOpacity
 							onPress={() => {
 								Actions.Settings();
-							}}>
+							}}
+							style={style.settingButton}>
 							<Ionicon
 								name="ios-settings"
 								size={40}

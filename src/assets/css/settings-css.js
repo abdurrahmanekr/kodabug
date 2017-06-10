@@ -18,12 +18,15 @@ module.exports = StyleSheet.create({
 	list: {
 		borderBottomWidth: 0,
 		borderTopWidth: 0,
-		marginTop: 0
+		marginTop: 0,
+		margin: 10
 	},
 	list_view: {
 		borderBottomWidth: 1,
 		borderBottomColor: '#eee',
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingBottom: 15,
+		paddingTop: 15
 	},
 	list_input: {
 		padding: 10,

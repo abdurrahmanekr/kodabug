@@ -5,7 +5,8 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	TouchableOpacity
+	TouchableOpacity,
+	Platform
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
@@ -28,11 +29,6 @@ export default class Settings extends Component {
 		this.state = {
 			options: [
 				{
-					icon: 'sign-out',
-					name: 'Çıkış Yap',
-					handler: 'sign-out'
-				},
-				{
 					icon: 'user',
 					name: 'Profili Düzenle',
 					handler: 'profile-edit'
@@ -41,8 +37,13 @@ export default class Settings extends Component {
 					icon: 'lock',
 					name: 'Şifre Değişikliği',
 					handler: 'account-edit'
-				}
-			]
+				},
+				{
+					icon: 'sign-out',
+					name: 'Çıkış Yap',
+					handler: 'sign-out'
+				},
+			],
 		};
 	}
 
@@ -53,9 +54,23 @@ export default class Settings extends Component {
 					<TouchableOpacity
 						onPress={() => {
 							Actions.pop();
+						}}
+						style={{
+							backgroundColor:'transparent',
+						    position: 'absolute',
+						    ...Platform.select({
+						      	ios: {
+						        	top: 2,
+						      	},
+						      	android: {
+						        	top: 0,
+						      	},
+						    }),
+						    left: -3,
+						    flexDirection: 'row',
 						}}>
 						<Icon
-							size={30}
+							size={40}
 							color='white'
 							type={'materialize'}
 							name='chevron-left' />
@@ -64,7 +79,6 @@ export default class Settings extends Component {
 			}
 		})
 	}
-
 
 	openPage(handler) {
 		switch (handler) {

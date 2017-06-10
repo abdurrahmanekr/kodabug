@@ -24,6 +24,9 @@ module.exports = StyleSheet.create({
 		top: 0,
 		bottom: 0
 	},
+	settingButton: {
+		backgroundColor: 'transparent'
+	},
 	profile_image_container: {
 		width: 100,
 		height: 100
