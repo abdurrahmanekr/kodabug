@@ -35,10 +35,14 @@ module.exports = StyleSheet.create({
 	startGameArea: {
 		backgroundColor: "#fff9e2",
 		alignItems: 'center',
-		margin: 10
+		margin: 10,
+		paddingBottom: 10,
+		borderWidth: 1,
+		borderColor: '#fff6d2',
+		borderRadius: 4
 	},
 	startGameAreaTitle: {
-		fontSize: 25,
+		fontSize: 24,
 		color: '#510600',
 		margin: 20
 	},
@@ -52,9 +56,13 @@ module.exports = StyleSheet.create({
 		flex: 4,
 		margin: 10,
 		backgroundColor: "#fff9e2",
+		borderWidth: 1,
+		borderColor: '#fff6d2',
+		borderRadius: 4
+
 	},
 	gameListTitle: {
-		fontSize: 23,
+		fontSize: 20,
 		margin: 10,
 		color: "#510600",
 		textAlign: 'center'

@@ -6,8 +6,11 @@ import {
 	Image,
 	List,
 	ScrollView,
-	Alert
+	Alert,
+	TouchableOpacity
 } from 'react-native';
+
+import {Actions} from 'react-native-router-flux';
 
 import {
 	UserService,
@@ -120,14 +123,17 @@ export default class MainTab extends Component {
 				</View>
 
 				<ScrollView>
-					<View
+					<TouchableOpacity
+						onPress={() => {
+							Actions.GameQuestionMain({type: 'reset'});
+						}}
 						style={style.startGameArea}>
 						<Text
 							style={style.startGameAreaTitle}>Oynamak için tıkla</Text>
 						<Image
 							source={require('@kodabug/images').kodabugPNG}
 							style={style.startGameAreaImage} />
-					</View>
+					</TouchableOpacity>
 
 					<View
 						style={style.gameList}>

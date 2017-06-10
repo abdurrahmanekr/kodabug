@@ -27,7 +27,15 @@ export default class GameQuestionMain extends Component {
 			],
 			question_type: "1",
 			correctAnswerId: ""
-		}
+		};
+	}
+
+	componentWillMount() {
+		this.loadGame();
+	}
+
+	async loadGame() {
+
 	}
 
 	render() {
