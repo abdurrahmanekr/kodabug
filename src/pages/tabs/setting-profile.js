@@ -107,14 +107,21 @@ export default class SettingProfile extends Component {
 					text: "Kaydet",
 					onPress: () => {
 						RegisterService.updateProfile({
-							"usname": self.state.usname,
-							"username": self.state.username,
-							"usmail": self.state.usmail,
-							"birth": self.state.birth
+							usname: self.state.usname,
+							username: self.state.username,
+							usmail: self.state.usmail,
+							birth: self.state.birth
 						}).then(res => {
 							this.setState({change: false});
 							if (res.result == "1") {
 								Alert.alert("Başarılı!", "Bilgileriniz Kaydedildi!");
+								GLOBALS.user = {
+									usname: self.state.usname,
+									username: self.state.username,
+									usmail: self.state.usmail,
+									birth: self.state.birth,
+									...GLOBALS.user
+								}
 							} else {
 								Alert.alert("Başarısız!", "Girdiğiniz değerler kullanılıyor");
 							}
