@@ -11,6 +11,12 @@ import {
 	TouchableOpacity
 } from 'react-native';
 
+import Config from '@kodabug/config';
+
+import {
+	TimeBar
+} from '@kodabug/components';
+
 import style from '@kodabug/style/game-question-main';
 
 export default class GameQuestionMain extends Component {
@@ -26,7 +32,8 @@ export default class GameQuestionMain extends Component {
 				{id: 3, value: 'hata verir'},
 			],
 			question_type: "1",
-			correctAnswerId: ""
+			correctAnswerId: "",
+			time: Config.MAX_GAME_TIMEOUT
 		};
 	}
 
@@ -41,6 +48,8 @@ export default class GameQuestionMain extends Component {
 	render() {
 		return (
 			<View style={style.body}>
+				<TimeBar
+					width={this.state.time}/>
 				<Text
 					style={style.question_name}>
 					{this.state.question_name}
