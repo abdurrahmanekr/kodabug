@@ -46,6 +46,9 @@ export default class GameQuestionMain extends Component {
 		this.loadGame();
 		BackHandler.addEventListener('hardwareBackPress', this.eventListenBackAndroid);
 	}
+	componentWillUnmount(){
+		BackHandler.removeEventListener('hardwareBackPress', this.eventListenBackAndroid);
+	}
 
 	eventListenBackAndroid(){
 		Alert.alert(
