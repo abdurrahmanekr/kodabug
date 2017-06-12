@@ -125,7 +125,7 @@ export default class MainTab extends Component {
 				<ScrollView>
 					<TouchableOpacity
 						onPress={() => {
-							Actions.GameQuestionMain({type: 'reset'});
+							Actions.GameQuestionMain();
 						}}
 						style={style.startGameArea}>
 						<Text
