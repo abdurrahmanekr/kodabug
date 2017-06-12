@@ -8,7 +8,9 @@ import {
 	Alert,
 	TextInput,
 	Button,
-	TouchableOpacity
+	TouchableOpacity,
+	BackAndroid,
+	BackHandler
 } from 'react-native';
 
 import Config from '@kodabug/config';
@@ -17,7 +19,10 @@ import {
 	TimeBar
 } from '@kodabug/components';
 
+import {Actions} from 'react-native-router-flux';
+
 import style from '@kodabug/style/game-question-main';
+
 
 export default class GameQuestionMain extends Component {
 	constructor(props) {
@@ -39,6 +44,24 @@ export default class GameQuestionMain extends Component {
 
 	componentWillMount() {
 		this.loadGame();
+		BackHandler.addEventListener('hardwareBackPress', this.eventListenBackAndroid);
+	}
+
+	eventListenBackAndroid(){
+		Alert.alert(
+			'Oyundandan çıkmak mı istiyorsunuz?',
+			'Oyundan çıkarsanız mağlup duruma düşersiniz',
+			[
+				{
+					text: "Çık",
+					onPress: () => { Actions.Main({type: 'reset'}) }
+				},
+				{
+					text: "Devam et"
+				}
+			]
+		);
+		return true; //stay on app
 	}
 
 	async loadGame() {
