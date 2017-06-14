@@ -113,7 +113,8 @@ module.exports = StyleSheet.create({
 		width: 120,
 		height: 120,
 		margin: 20,
-		marginBottom: 10
+		marginBottom: 10,
+		borderRadius: 120
 	},
 	set_profile_image_text: {
 		alignSelf: 'center',

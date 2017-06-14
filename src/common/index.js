@@ -29,7 +29,11 @@ export async function sendGET(service, method, data) {
 	data.session_ticket = await AsyncStorage.getItem('session_ticket');
 
 	return new Promise((resolve, reject) => {
-		fetch(encodeServiceData(service, data))
+		fetch(encodeServiceData(service, data), {
+			headers: {
+				'Cache-Control': 'no-cache'
+			}
+		})
 		.then(res => res.json())
 		.then(res => {
 			resolve(res);
@@ -38,6 +42,28 @@ export async function sendGET(service, method, data) {
 			reject('connection_error');
 		})
 	})
+}
+
+export async function sendPOST(service, method, data, body){
+	data = data || {};
+	data.method = method;
+	data.session_ticket = await AsyncStorage.getItem('session_ticket');
+
+	return new Promise((resolve, reject) => {
+		fetch(encodeServiceData(service, data), {
+			method: 'POST',
+			headers:{
+				'Cache-Control': 'no-cache'
+			},
+			body: body
+		}).then(res => res.json())
+		.then(res => {
+			resolve(res);
+		})
+		.catch(res => {
+			reject('connection_error');
+		})
+	});
 }
 
 export async function setSessionTicket(ticket) {

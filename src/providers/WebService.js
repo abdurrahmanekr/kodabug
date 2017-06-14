@@ -3,7 +3,8 @@
  */
 
 import {
-	sendGET
+	sendGET,
+	sendPOST
 } from '@kodabug/common'
 
 class WebService {
@@ -33,6 +34,10 @@ class WebService {
 
 	async updateProfile(data) {
 		return sendGET('RegisterService', 'updateProfile', data)
+	}
+
+	async updateProfilePhoto(data, body){
+		return sendPOST('RegisterService', 'updateProfile', data, body)
 	}
 }
 

@@ -19,6 +19,8 @@ import { Kohana } from 'react-native-textinput-effects';
 
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 
+import ImagePicker  from 'react-native-image-picker';
+
 import style from '@kodabug/style/settings';
 
 import {
@@ -35,11 +37,13 @@ export default class SettingProfile extends Component {
 				surname: GLOBALS.user.surname,
 				username: GLOBALS.user.username,
 				usmail: GLOBALS.user.usmail,
-				birth: GLOBALS.user.birth
+				birth: GLOBALS.user.birth,
+				photo: GLOBALS.user.photo,
 			};
 		else
 			this.state = {
-				change: false
+				change: false,
+				photoFormData: null
 			};
 	}
 
@@ -125,7 +129,21 @@ export default class SettingProfile extends Component {
 							} else {
 								Alert.alert("Başarısız!", "Girdiğiniz değerler kullanılıyor");
 							}
-						})
+						});
+						if(self.state.photoForm){
+							RegisterService.updateProfilePhoto({}, self.state.photoForm).then(res => {
+								this.setState({change: false});
+								if(res.result == "1"){
+									GLOBALS.user = {
+										photo: self.state.photo
+									}
+								}else{
+									this.setState({
+										photo: null
+									});
+								}
+							})
+						}
 					},
 				},
 				{
@@ -136,13 +154,49 @@ export default class SettingProfile extends Component {
 		)
 	}
 
+	uploadPhoto(){
+		var options = {
+			title: 'Fotoğraf seç',
+			cancelButtonTitle: 'İptal',
+			takePhotoButtonTitle: 'Kameradan fotoğraf çek',
+			chooseFromLibraryButtonTitle: 'Galeriden seç',
+			cameraType: 'front',
+			mediaType: 'photo',
+			storageOptions: {
+				skipBackup: true,
+				path: 'DCIM'
+			}
+		}
+
+		ImagePicker.showImagePicker(options, (response) => {
+
+		if (response.didCancel) {
+			//user did cancel picking image
+		} else if (response.error) {
+			//error on picking image
+		} else {
+			if(response){
+				let file = new FormData();
+				file.append('file', {uri: response.uri, name: response.fileName, type: response.type});
+				file.append('Content-Type', 'multipart/form-data');
+				this.setState({
+					photo: response.uri,
+					photoForm: file,
+					change: true
+				})
+			}
+
+		}
+		});
+	}
+
 	render() {
 		return (
 			<View
 				style={style.body}>
 				<ScrollView
 					contentContainerStyle={style.set_profile_scroll}>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={() => this.uploadPhoto()}>
 						<Image
 							source={this.state.photo ? {
 								uri: this.state.photo

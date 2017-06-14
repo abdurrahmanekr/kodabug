@@ -36,6 +36,10 @@ class RegisterService extends EventEmitter {
 	async updateProfile(data) {
 		return WebService.updateProfile(data)
 	}
+
+	async updateProfilePhoto(data, body) {
+		return WebService.updateProfilePhoto(data, body)
+	}
 }
 
 
