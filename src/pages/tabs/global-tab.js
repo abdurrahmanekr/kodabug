@@ -70,14 +70,15 @@ export default class GlobalTab extends Component {
 					</View>
 					<View
 						style={style.profile_card}>
-						<View
-							style={style.profile_image_container}>
+						<TouchableOpacity
+							style={style.profile_image_container}
+							onPress={() => {console.log(this.state.user.photo)}}>
 							<Image
 								source={this.state.user.photo ? {
-									uri: this.state.user.photo
+									uri: this.state.user.photo + "?v=" + Math.random(),
 								}: require('@kodabug/images').userPNG}
 								style={style.profile_image}/>
-						</View>
+						</TouchableOpacity>
 						<View
 							style={style.profile_right_container}>
 							<Text

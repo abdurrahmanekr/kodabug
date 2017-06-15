@@ -199,7 +199,7 @@ export default class SettingProfile extends Component {
 					<TouchableOpacity onPress={() => this.uploadPhoto()}>
 						<Image
 							source={this.state.photo ? {
-								uri: this.state.photo
+								uri: this.state.photo + "?v=" + Math.random()
 							} : require('@kodabug/images').userPNG}
 							style={style.set_profile_image}/>
 						<Text
