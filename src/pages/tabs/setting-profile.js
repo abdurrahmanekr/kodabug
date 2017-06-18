@@ -111,6 +111,7 @@ export default class SettingProfile extends Component {
 					onPress: () => {
 						RegisterService.updateProfile({
 							usname: self.state.usname,
+							surname: self.state.surname,
 							username: self.state.username,
 							usmail: self.state.usmail,
 							birth: self.state.birth
@@ -120,6 +121,7 @@ export default class SettingProfile extends Component {
 								Alert.alert("Başarılı!", "Bilgileriniz Kaydedildi!");
 								GLOBALS.user = {
 									usname: self.state.usname,
+									surname: self.state.surname,
 									username: self.state.username,
 									usmail: self.state.usmail,
 									birth: self.state.birth,
