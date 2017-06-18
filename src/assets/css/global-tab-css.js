@@ -34,7 +34,7 @@ module.exports = StyleSheet.create({
 	profile_image: {
 		width: 100,
 		height: 100,
-		borderRadius: 100
+		borderRadius: 50
 	},
 	profile_right_container: {
 		flex: 1,

@@ -42,8 +42,7 @@ export default class SettingProfile extends Component {
 			};
 		else
 			this.state = {
-				change: false,
-				photoFormData: null
+				change: false
 			};
 	}
 
@@ -154,7 +153,7 @@ export default class SettingProfile extends Component {
 		)
 	}
 
-	uploadPhoto(){
+	uploadPhoto() {
 		var options = {
 			title: 'Fotoğraf seç',
 			cancelButtonTitle: 'İptal',
@@ -168,25 +167,22 @@ export default class SettingProfile extends Component {
 			}
 		}
 
-		ImagePicker.showImagePicker(options, (response) => {
+		ImagePicker.showImagePicker(options, (res) => {
 
-		if (response.didCancel) {
-			//user did cancel picking image
-		} else if (response.error) {
-			//error on picking image
-		} else {
-			if(response){
+			if (res.didCancel) {
+				//user did cancel picking image
+			} else if (res.error) {
+				//error on picking image
+			} else {
 				let file = new FormData();
-				file.append('file', {uri: response.uri, name: response.fileName, type: response.type});
+				file.append('file', { uri: res.uri, name: res.fileName, type: res.type });
 				file.append('Content-Type', 'multipart/form-data');
 				this.setState({
-					photo: response.uri,
+					photo: res.uri,
 					photoForm: file,
 					change: true
 				})
 			}
-
-		}
 		});
 	}
 
