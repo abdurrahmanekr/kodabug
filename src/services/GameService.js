@@ -1,22 +1,14 @@
-import EventEmitter from 'EventEmitter';
-
-import {
-	Alert
-} from 'react-native';
-
 import {
 	WebService
 } from '@kodabug/providers';
 
-import {
-	getSessionTicket
-} from '@kodabug/common';
+class GameService {
 
-class GameService extends EventEmitter {
-	constructor(props) {
-		super(props);
-
-		this.state = {};
+	/*
+	 * Kullanıcını bir kullanıcı şeçmesini sağlar
+	*/
+	async startGame(data) {
+		return WebService.startGame(data)
 	}
 
 	/*

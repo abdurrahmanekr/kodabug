@@ -39,6 +39,10 @@ class WebService {
 	async updateProfilePhoto(data, body){
 		return sendPOST('RegisterService', 'updateProfile', data, body)
 	}
+
+	async startGame(data) {
+		return sendGET('GameService', 'startGame', data)
+	}
 }
 
 module.exports = new WebService();

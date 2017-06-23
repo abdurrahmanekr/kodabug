@@ -9,6 +9,7 @@ import Register from './register';
 import GameQuestionMain from './game-question-main';
 import GameQuestionLose from './game-question-lose';
 import GameQuestionWin from './game-question-win';
+import GameQuestionChallenge from './game-question-challenge';
 import Settings from './settings';
 
 export {
@@ -19,5 +20,6 @@ export {
 	GameQuestionMain,
 	GameQuestionLose,
 	GameQuestionWin,
-	Settings
+	Settings,
+	GameQuestionChallenge,
 }

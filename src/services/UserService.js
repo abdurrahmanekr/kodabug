@@ -1,9 +1,3 @@
-import EventEmitter from 'EventEmitter';
-
-import {
-	Alert
-} from 'react-native';
-
 import {
 	WebService
 } from '@kodabug/providers';
@@ -13,12 +7,7 @@ import {
 	setUser
 } from '@kodabug/common';
 
-class UserService extends EventEmitter {
-
-	constructor(props) {
-		super(props)
-	}
-
+class UserService {
 	/*
 	 * Kullanıcının gerekli olan bilgilerini getirir
 	 * bu method'a this bind edilmelidir

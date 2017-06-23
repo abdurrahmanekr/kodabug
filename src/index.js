@@ -20,6 +20,7 @@ import {
 	GameQuestionMain,
 	GameQuestionLose,
 	GameQuestionWin,
+	GameQuestionChallenge,
 	Settings
 } from '@kodabug/pages';
 
@@ -43,6 +44,7 @@ export default class kodabug extends Component {
 				<Scene key="GameQuestionMain" component={GameQuestionMain} hideNavBar={true}/>
 				<Scene key="GameQuestionLose" component={GameQuestionLose} hideNavBar={true}/>
 				<Scene key="GameQuestionWin" component={GameQuestionWin} hideNavBar={true}/>
+				<Scene key="GameQuestionChallenge" component={GameQuestionChallenge} hideNavBar={false}/>
 				<Scene key="Settings" hideNavBar={false}>
 					<Scene key="SettingsMain" component={Settings} title="Ayarlar" />
 					<Scene key="SettingProfile" component={SettingProfile} title="Profili Düzenle" />

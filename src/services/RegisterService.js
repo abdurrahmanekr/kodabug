@@ -1,20 +1,8 @@
-import EventEmitter from 'EventEmitter';
-
-import {
-	Alert
-} from 'react-native';
-
 import {
 	WebService
 } from '@kodabug/providers';
 
-import {getArgs} from '@kodabug/common';
-
-class RegisterService extends EventEmitter {
-
-	constructor(props) {
-		super(props)
-	}
+class RegisterService {
 
 	/*
 	 * yeni bir kullanıcı oluşturmayı sağlar.
