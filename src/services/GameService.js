@@ -12,6 +12,13 @@ class GameService {
 	}
 
 	/*
+	 * oyunun kendini getirir
+	*/
+	async getTrueOption(data) {
+		return WebService.getTrueOption(data)
+	}
+
+	/*
 	 * oyun kuyruğuna oyun atmak için kullanılır
 	*/
 	async getRandomGame(data) {

@@ -89,6 +89,20 @@ export default class GameQuestionMain extends Component {
 		});
 	}
 
+	selectOption (index) {
+		var self = this;
+		GameService.getTrueOption({ try: index }).then(res => {
+			if (res.result !== -1) {
+				res = res.result;
+				if (index !== parseInt(res.qtrue)) {
+					Alert.alert('Yanlış Cevap');
+				} else {
+					Alert.alert('Doğru Cevap');
+				}
+			}
+		});
+	}
+
 	render() {
 		return (
 			this.state.start === true ?
@@ -113,7 +127,7 @@ export default class GameQuestionMain extends Component {
 								<TouchableOpacity
 									style={style.answer}
 									key={key}
-									onPress={() => this.setState({trueOption: key})}>
+									onPress={() => this.selectOption.bind(this)(key)}>
 									<Text>
 										{ answer.value }
 									</Text>
