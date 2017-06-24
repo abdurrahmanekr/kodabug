@@ -7,6 +7,8 @@ import {
 	StatusBar
 } from 'react-native';
 
+import {Actions} from 'react-native-router-flux';
+
 import style from '@kodabug/style/game-question-lose';
 
 export default class GameQuestionLose extends Component {
@@ -35,7 +37,9 @@ export default class GameQuestionLose extends Component {
 					</View>
 					<TouchableOpacity
 						style={style.lose_button}
-						onPress={() => {}}>
+						onPress={() => {
+							Actions.Main({type: 'reset'});
+						}}>
 						<Text
 							style={style.lose_button_text}>Çık</Text>
 					</TouchableOpacity>

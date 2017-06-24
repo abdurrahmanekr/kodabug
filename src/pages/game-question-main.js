@@ -79,6 +79,7 @@ export default class GameQuestionMain extends Component {
 				res = res.result;
 				self.setState({
 					start: true,
+					trying: false,
 					qname: res.qname,
 					qextension: null,
 					qoption: res.qoption.map((x, i) => {return {key: i, value: x}}),
@@ -91,13 +92,28 @@ export default class GameQuestionMain extends Component {
 
 	selectOption (index) {
 		var self = this;
+		this.setState({
+			trying: true
+		});
 		GameService.getTrueOption({ try: index }).then(res => {
 			if (res.result !== -1) {
 				res = res.result;
 				if (index !== parseInt(res.qtrue)) {
 					Alert.alert('Yanlış Cevap');
+					Actions.GameQuestionLose({
+						state: {
+							gid: this.state.gid
+						},
+						type: 'reset'
+					});
 				} else {
 					Alert.alert('Doğru Cevap');
+					Actions.GameQuestionWin({
+						state: {
+							gid: this.state.gid
+						},
+						type: 'reset'
+					});
 				}
 			}
 		});
@@ -127,6 +143,7 @@ export default class GameQuestionMain extends Component {
 								<TouchableOpacity
 									style={style.answer}
 									key={key}
+									disabled={this.state.trying}
 									onPress={() => this.selectOption.bind(this)(key)}>
 									<Text>
 										{ answer.value }

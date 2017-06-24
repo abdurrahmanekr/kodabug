@@ -7,6 +7,8 @@ import {
 	StatusBar
 } from 'react-native';
 
+import {Actions} from 'react-native-router-flux';
+
 import style from '@kodabug/style/game-question-win';
 
 export default class GameQuestionWin extends Component {
@@ -14,6 +16,7 @@ export default class GameQuestionWin extends Component {
 		super(props);
 
 		this.state = {
+			gid: props.state && props.state.gid,
 			title: 'Tebrikler !',
 			message: 'Devam etmek ister miydin ?',
 
@@ -43,13 +46,22 @@ export default class GameQuestionWin extends Component {
 						style={style.win_buttons}>
 						<TouchableOpacity
 							style={style.win_button1}
-							onPress={() => {}}>
+							onPress={() => {
+								Actions.Main({type: 'reset'});
+							}}>
 							<Text
 								style={style.win_button_text}>Çık</Text>
 						</TouchableOpacity>
 						<TouchableOpacity
 							style={style.win_button2}
-							onPress={() => {}}>
+							onPress={() => {
+								Actions.GameQuestionMain({
+									state: {
+										gid: this.state.gid
+									},
+									type: 'reset'
+								})
+							}}>
 							<Text
 								style={style.win_button_text}>Devam</Text>
 						</TouchableOpacity>
