@@ -79,6 +79,7 @@ export default class GameQuestionMain extends Component {
 				res = res.result;
 				self.setState({
 					start: true,
+					end: false,
 					trying: false,
 					qname: res.qname,
 					qextension: null,
@@ -98,6 +99,12 @@ export default class GameQuestionMain extends Component {
 		GameService.getTrueOption({ try: index }).then(res => {
 			if (res.result !== -1) {
 				res = res.result;
+
+				// oyun bitti
+				self.setState({
+					end: true
+				});
+
 				if (index !== parseInt(res.qtrue)) {
 					Alert.alert('Yanlış Cevap');
 					Actions.GameQuestionLose({
@@ -132,6 +139,17 @@ export default class GameQuestionMain extends Component {
 			this.state.start === true ?
 				<View style={style.body}>
 					<TimeBar
+						timeUp={() => {
+							if (this.state.end === false) {
+								Alert.alert('Süre doldu');
+								Actions.GameQuestionLose({
+									state: {
+										gid: this.state.gid
+									},
+									type: 'reset'
+								});
+							}
+						}}
 						width={this.state.time}/>
 					<Text
 						style={style.qname}>

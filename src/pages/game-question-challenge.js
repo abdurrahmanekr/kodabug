@@ -67,7 +67,7 @@ export default class GameQuestionChallenge extends Component {
 					self.letsDoIt();
 				});
 			}
-		})
+		});
 	}
 
 	letsDoIt(start) {

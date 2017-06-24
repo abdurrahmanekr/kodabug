@@ -3,7 +3,8 @@ import {
 	View,
 	Animated,
 	Easing,
-	Text
+	Text,
+	Alert
 } from 'react-native';
 
 const {height, width} = require('Dimensions').get('window')
@@ -16,6 +17,7 @@ export default class CommunityTab extends Component {
 	}
 
 	componentWillMount() {
+		var self = this;
 		Animated.timing(
 		    this.timeout,
 		    {
@@ -23,7 +25,9 @@ export default class CommunityTab extends Component {
 				duration: this.props.width || 20000,
 				easing: Easing.linear
 		    }
-		).start();
+		).start(() => {
+			self.props.timeUp && self.props.timeUp();
+		});
 	}
 
 	render() {
