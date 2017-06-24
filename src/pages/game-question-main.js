@@ -115,6 +115,14 @@ export default class GameQuestionMain extends Component {
 						type: 'reset'
 					});
 				}
+			} else {
+				Alert.alert('Bir sorun oluştu');
+				Actions.GameQuestionLose({
+					state: {
+						gid: this.state.gid
+					},
+					type: 'reset'
+				});
 			}
 		});
 	}
