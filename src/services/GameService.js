@@ -5,6 +5,20 @@ import {
 class GameService {
 
 	/*
+	 * oyunun kendini getirir
+	*/
+	async getGame(data) {
+		return WebService.getGame(data)
+	}
+
+	/*
+	 * oyun kuyruğuna oyun atmak için kullanılır
+	*/
+	async getRandomGame(data) {
+		return WebService.getRandomGame(data)
+	}
+
+	/*
 	 * Kullanıcını bir kullanıcı şeçmesini sağlar
 	*/
 	async startGame(data) {

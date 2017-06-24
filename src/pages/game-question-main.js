@@ -10,8 +10,11 @@ import {
 	Button,
 	TouchableOpacity,
 	BackAndroid,
-	BackHandler
+	BackHandler,
+	ActivityIndicator,
 } from 'react-native';
+
+import {Actions} from 'react-native-router-flux';
 
 import Config from '@kodabug/config';
 
@@ -19,25 +22,23 @@ import {
 	TimeBar
 } from '@kodabug/components';
 
-import {Actions} from 'react-native-router-flux';
+import {
+	GameService
+} from '@kodabug/services';
 
 import style from '@kodabug/style/game-question-main';
-
 
 export default class GameQuestionMain extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			question_name: 'İşlem sonunda a değişkenin değeri nedir ?',
-			question_extension: 'var a = null;\nif (a = false)\n\t\ta=true;',
-			answers: [
-				{id: 0, value: 'true'},
-				{id: 1, value: 'false'},
-				{id: 2, value: 'null'},
-				{id: 3, value: 'hata verir'},
-			],
-			question_type: "1",
-			correctAnswerId: "",
+			gid: props.state && props.state.gid,
+			start: false,
+			qname: null,
+			qextension: null,
+			qoption: null,
+			qtype: null,
+			trueOption: "",
 			time: Config.MAX_GAME_TIMEOUT
 		};
 	}
@@ -69,42 +70,66 @@ export default class GameQuestionMain extends Component {
 	}
 
 	async loadGame() {
-
+		var self = this;
+		// max timeout kadar bekler
+		GameService.getRandomGame({ gid: self.state.gid });
+		// burası ise asıl soruyu getirdiğimiz yer
+		GameService.getGame().then(res => {
+			if (res.result !== -1) {
+				res = res.result;
+				self.setState({
+					start: true,
+					qname: res.qname,
+					qextension: null,
+					qoption: res.qoption.map((x, i) => {return {key: i, value: x}}),
+					qtype: null,
+					trueOption: ""
+				});
+			}
+		});
 	}
 
 	render() {
 		return (
-			<View style={style.body}>
-				<TimeBar
-					width={this.state.time}/>
-				<Text
-					style={style.question_name}>
-					{this.state.question_name}
-				</Text>
-				{
-					this.state.question_extension !== undefined ? <Text
-						style={style.question_extension}>
-						{this.state.question_extension}
-					</Text>: null
-				}
-				<View
-					style={style.answers}>
-				{
-					this.state.answers.map((answer, key) => {
-						return(
-							<TouchableOpacity
-								style={style.answer}
-								key={key}
-								onPress={() => this.setState({correctAnswerId: key})}>
-								<Text>
-									{answer.value}
-								</Text>
-							</TouchableOpacity>
-						)
-					})
-				}
+			this.state.start === true ?
+				<View style={style.body}>
+					<TimeBar
+						width={this.state.time}/>
+					<Text
+						style={style.qname}>
+						{this.state.qname}
+					</Text>
+					{
+						this.state.qextension !== undefined ? <Text
+							style={style.qextension}>
+							{this.state.qextension}
+						</Text>: null
+					}
+					<View
+						style={style.qoption}>
+					{
+						this.state.qoption.map((answer, key) => {
+							return(
+								<TouchableOpacity
+									style={style.answer}
+									key={key}
+									onPress={() => this.setState({trueOption: key})}>
+									<Text>
+										{ answer.value }
+									</Text>
+								</TouchableOpacity>
+							)
+						})
+					}
+					</View>
 				</View>
-			</View>
+				:
+				<View style={[style.body, style.loading]}>
+					<ActivityIndicator
+						style={style.loadingUser}
+						animating={true}
+						size={"large"}/>
+				</View>
 		);
 	}
 }

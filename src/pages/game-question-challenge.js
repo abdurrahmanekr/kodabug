@@ -38,7 +38,8 @@ export default class GameQuestionChallenge extends Component {
 				photo: null,
 			},
 			isLoadedRivalUser: false, // 'loading' || 'loaded'
-			time: 3
+			time: 3,
+			gid: null
 		}
 	}
 
@@ -50,6 +51,10 @@ export default class GameQuestionChallenge extends Component {
 		GameService.startGame({}).then(res => {
 			if (res.result !== -1) {
 				res = res.result;
+				self.setState({
+					gid: res.gid
+				});
+
 				UserService.getUserVCard({ usid: res.rival }).then(user => {
 
 					self.setState({
@@ -67,7 +72,12 @@ export default class GameQuestionChallenge extends Component {
 
 	letsDoIt(start) {
 		if (start !== undefined)
-			Actions.GameQuestionMain({type: 'reset'});
+			Actions.GameQuestionMain({
+				state: {
+					gid: this.state.gid
+				},
+				type: 'reset'
+			});
 		else
 			this.countdown();
 	}

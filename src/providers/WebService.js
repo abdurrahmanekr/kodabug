@@ -43,6 +43,14 @@ class WebService {
 	async startGame(data) {
 		return sendGET('GameService', 'startGame', data)
 	}
+
+	async getRandomGame(data) {
+		return sendGET('GameService', 'getRandomGame', data)
+	}
+
+	async getGame(data) {
+		return sendGET('GameService', 'getGame', data)
+	}
 }
 
 module.exports = new WebService();

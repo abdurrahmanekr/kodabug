@@ -6,15 +6,13 @@ import {StyleSheet, Platform} from 'react-native';
 
 module.exports = StyleSheet.create({
 	body: {
+		flex: 1
+	},
+	loading: {
 		flex: 1,
-		...Platform.select({
-			ios: {
-				marginTop: 64
-			},
-			android: {
-				marginTop: 50
-			}
-		}),
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	question_name: {
 		fontSize: 20,
