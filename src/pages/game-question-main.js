@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
+import Toast from 'react-native-root-toast';
 
 import Config from '@kodabug/config';
 
@@ -106,7 +107,7 @@ export default class GameQuestionMain extends Component {
 				});
 
 				if (index !== parseInt(res.qtrue)) {
-					Alert.alert('Yanlış Cevap');
+					Toast.show('Yanlış Cevap!', { duration: Toast.durations.SHORT, position: Toast.positions.BOTTOM, animation: true, hideOnPress: true});
 					Actions.GameQuestionLose({
 						state: {
 							gid: this.state.gid
@@ -114,7 +115,7 @@ export default class GameQuestionMain extends Component {
 						type: 'reset'
 					});
 				} else {
-					Alert.alert('Doğru Cevap');
+					Toast.show('Doğru Cevap!', { duration: Toast.durations.SHORT, position: Toast.positions.BOTTOM, animation: true, hideOnPress: true});
 					Actions.GameQuestionWin({
 						state: {
 							gid: this.state.gid
@@ -123,7 +124,7 @@ export default class GameQuestionMain extends Component {
 					});
 				}
 			} else {
-				Alert.alert('Bir sorun oluştu');
+				Toast.show('Bir sorun oluştu!', { duration: Toast.durations.SHORT, position: Toast.positions.BOTTOM, animation: true, hideOnPress: true});
 				Actions.GameQuestionLose({
 					state: {
 						gid: this.state.gid
