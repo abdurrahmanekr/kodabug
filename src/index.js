@@ -36,19 +36,19 @@ export default class kodabug extends Component {
 	render() {
 		const scenes = Actions.create(
 			<Scene key="root">
-				<Scene key="Start" component={Start} hideNavBar={true}/>
-				<Scene key="Main" component={Main} hideNavBar={true}/>
-				<Scene key="Login" component={Login} hideNavBar={true}/>
-				<Scene key="Register" component={Register} hideNavBar={false} title="Kayıt Ol"/>
-				<Scene key="SendGame" component={SendGame} hideNavBar={false} title="Katkıda Bulun"/>
-				<Scene key="GameQuestionMain" component={GameQuestionMain} hideNavBar={true}/>
-				<Scene key="GameQuestionLose" component={GameQuestionLose} hideNavBar={true}/>
-				<Scene key="GameQuestionWin" component={GameQuestionWin} hideNavBar={true}/>
-				<Scene key="GameQuestionChallenge" component={GameQuestionChallenge} hideNavBar={false}/>
-				<Scene key="Settings" hideNavBar={false}>
-					<Scene key="SettingsMain" component={Settings} title="Ayarlar" />
-					<Scene key="SettingProfile" component={SettingProfile} title="Profili Düzenle" />
-					<Scene key="SettingPassword" component={SettingPassword} title="Hesabı Düzenle" />
+				<Scene key="Start" component={Start} hideNavBar={true} duration={0}/>
+				<Scene key="Main" component={Main} hideNavBar={true} duration={0}/>
+				<Scene key="Login" component={Login} hideNavBar={true} duration={0}/>
+				<Scene key="Register" component={Register} hideNavBar={false} title="Kayıt Ol" duration={0}/>
+				<Scene key="SendGame" component={SendGame} hideNavBar={false} title="Katkıda Bulun" duration={0}/>
+				<Scene key="GameQuestionMain" component={GameQuestionMain} hideNavBar={true} duration={0}/>
+				<Scene key="GameQuestionLose" component={GameQuestionLose} hideNavBar={true} duration={0}/>
+				<Scene key="GameQuestionWin" component={GameQuestionWin} hideNavBar={true} duration={0}/>
+				<Scene key="GameQuestionChallenge" component={GameQuestionChallenge} hideNavBar={false} duration={0}/>
+				<Scene key="Settings" hideNavBar={false} duration={0}>
+					<Scene key="SettingsMain" component={Settings} title="Ayarlar" duration={0} />
+					<Scene key="SettingProfile" component={SettingProfile} title="Profili Düzenle" duration={0} />
+					<Scene key="SettingPassword" component={SettingPassword} title="Hesabı Düzenle" duration={0} />
 				</Scene>
 			</Scene>
 		);
