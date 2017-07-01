@@ -48,13 +48,13 @@ class UserService {
 	 * @session_ticket: kullanıcının session_ticket bilgisi
 	*/
 	async getUserVCard(data) {
-    usid = data["usid"];
+    var usid = data["usid"];
     
     if(usid in this.vCardList)
       return this.vCardList[usid]
     else
-      varData = WebService.getUserVCard(data);
-      this.vCardList[usid] = varData;
+      var vCardData = WebService.getUserVCard(data);
+      this.vCardList[usid] = vCardData;
       return this.vCardList[usid];
 	}
 }
