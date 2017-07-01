@@ -54,3 +54,6 @@ fastlane/screenshots
 
 # swap files for vim
 *.swp
+
+# npm packages
+package-lock.json
