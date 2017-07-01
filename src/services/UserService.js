@@ -8,6 +8,10 @@ import {
 } from '@kodabug/common';
 
 class UserService {
+  constructor(){
+    this.vCardList = {}
+  }
+
 	/*
 	 * Kullanıcının gerekli olan bilgilerini getirir
 	 * bu method'a this bind edilmelidir
@@ -29,22 +33,29 @@ class UserService {
 		})
 	}
 
-	/*
+  /*
 	 * Bu method kullancının giriş yapmasını sağlar
 	 * @usname: kullanıcı adı
 	 * @password: kullanıcı şifresi
 	*/
-	async loginUser(data) {
+  async loginUser(data) {
 		return WebService.loginUser(data)
-	}
+  }
 
-	/*
+  /*
 	 * Bir kullanıcının basit ve sade bir biçimde bilgilerini getirmeyi sağlar.
 	 * @usid: kullanıcı adı veya maili
 	 * @session_ticket: kullanıcının session_ticket bilgisi
 	*/
 	async getUserVCard(data) {
-		return WebService.getUserVCard(data)
+    usid = data["usid"];
+    
+    if(usid in this.vCardList)
+      return this.vCardList[usid]
+    else
+      varData = WebService.getUserVCard(data);
+      this.vCardList[usid] = varData;
+      return this.vCardList[usid];
 	}
 }
 
